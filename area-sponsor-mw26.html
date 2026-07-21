@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Area Tecnica Sponsor | Marketers World 2026</title>
+  <meta name="description" content="Area tecnica per gli sponsor confermati di Marketers World 2026: calendario scadenze, grafiche stand, ticket, accesso, spedizioni e contatti del team.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            mw: {
+              dark: '#060b14',
+              card: '#0d1525',
+              green: '#78E591',
+              'green-light': '#9FF9B4',
+              blue: '#69B4EA',
+            }
+          },
+          fontFamily: {
+            display: ['Space Grotesk', 'sans-serif'],
+            body: ['DM Sans', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: #060b14;
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      overflow-x: hidden;
+    }
+
+    .text-grad {
+      background: linear-gradient(135deg, #9FF9B4, #69B4EA);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .card-glass {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(10px);
+    }
+
+    .card-accent {
+      background: rgba(120, 229, 145, 0.06);
+      border: 1px solid rgba(120, 229, 145, 0.2);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #9FF9B4, #69B4EA);
+      color: #060b14;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      transition: all 0.3s ease;
+    }
+    .btn-primary:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 40px rgba(120, 229, 145, 0.35);
+    }
+
+    .btn-outline {
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #fff;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+    .btn-outline:hover {
+      border-color: #78E591;
+      color: #78E591;
+    }
+
+    #nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(6,11,20,0.0);
+      backdrop-filter: blur(0px);
+      transition: background 0.4s ease, backdrop-filter 0.4s ease, border-color 0.4s ease;
+      border-bottom: 1px solid transparent;
+    }
+    #nav.scrolled {
+      background: rgba(6,11,20,0.92);
+      backdrop-filter: blur(16px);
+      border-bottom-color: rgba(255,255,255,0.06);
+    }
+
+    .section-label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #78E591;
+    }
+
+    /* Timeline dot */
+    .tl-dot {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #9FF9B4, #69B4EA);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      color: #060b14;
+      font-size: 0.875rem;
+      flex-shrink: 0;
+      box-shadow: 0 0 20px rgba(120,229,145,0.3);
+    }
+
+    /* FAQ / details */
+    details summary { cursor: pointer; list-style: none; }
+    details summary::-webkit-details-marker { display: none; }
+    details[open] .faq-icon { transform: rotate(45deg); }
+    .faq-icon { transition: transform 0.3s ease; }
+
+    /* Category chips (riusate per le aree di competenza dei contatti) */
+    .cat-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      background: rgba(120,229,145,0.07);
+      border: 1px solid rgba(120,229,145,0.18);
+      border-radius: 99px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.75);
+      transition: all 0.25s;
+    }
+    .cat-chip:hover {
+      background: rgba(120,229,145,0.14);
+      color: #fff;
+    }
+
+    /* Placeholder da completare prima della pubblicazione */
+    .todo-link {
+      display: inline-block;
+      padding: 2px 10px;
+      border: 1px dashed rgba(255,196,0,0.5);
+      border-radius: 8px;
+      background: rgba(255,196,0,0.08);
+      color: #ffd75e;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    /* Calendario a griglia mensile */
+    .cal-cell {
+      aspect-ratio: 1 / 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.4);
+      border-radius: 10px;
+    }
+    .cal-head {
+      aspect-ratio: auto;
+      padding: 4px 0;
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+    }
+    a.cal-day-dot {
+      background: rgba(var(--dc), 0.16);
+      border: 1px solid rgba(var(--dc), 0.55);
+      color: rgb(var(--dc));
+      font-weight: 700;
+      box-shadow: 0 0 14px rgba(var(--dc), 0.22);
+      transition: all 0.25s ease;
+    }
+    a.cal-day-dot:hover {
+      background: rgba(var(--dc), 0.30);
+      box-shadow: 0 0 22px rgba(var(--dc), 0.4);
+      transform: scale(1.06);
+    }
+    .cal-event {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.6);
+      transition: color 0.25s ease;
+    }
+    .cal-event:hover { color: #fff; }
+    .cal-event-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 5px;
+    }
+
+    .gsap-fade { opacity: 0; transform: translateY(28px); }
+
+    @media (max-width: 768px) {
+      .hide-mobile { display: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav" class="py-4">
+  <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
+    <a href="https://marketersworld.net" class="flex items-center gap-3">
+      <img src="https://marketersworld.net/wp-content/uploads/2023/11/Logo-MarketersWorld-by-wearemarketers.png"
+           alt="Marketers World" class="h-8 w-auto">
+    </a>
+    <div class="hide-mobile flex items-center gap-6">
+      <a href="#contatti-utili" class="text-sm text-white/60 hover:text-white transition-colors">Contatti</a>
+      <a href="#calendario" class="text-sm text-white/60 hover:text-white transition-colors">Calendario</a>
+      <a href="#grafiche"  class="text-sm text-white/60 hover:text-white transition-colors">Grafiche</a>
+      <a href="#ticket"    class="text-sm text-white/60 hover:text-white transition-colors">Ticket</a>
+      <a href="#accesso"   class="text-sm text-white/60 hover:text-white transition-colors">Logistica</a>
+      <a href="#documenti" class="text-sm text-white/60 hover:text-white transition-colors">Documenti</a>
+      <a href="#programma" class="text-sm text-white/60 hover:text-white transition-colors">Programma</a>
+      <a href="#upsell" class="text-sm text-white/60 hover:text-white transition-colors">Upsell</a>
+      <a href="#faq" class="text-sm text-white/60 hover:text-white transition-colors">FAQ</a>
+    </div>
+    <a href="#contatti-utili" class="md:hidden text-sm text-white/70">Contatti</a>
+  </div>
+</nav>
+
+
+<!-- HERO -->
+<section class="relative overflow-hidden">
+  <div class="absolute inset-0">
+    <img src="https://marketersworld.net/wp-content/uploads/2025/12/MW26-sponsorpage-img-002_comp.png"
+         class="w-full h-full object-cover" style="opacity: 0.18;" alt="Marketers World, platea">
+    <div class="absolute inset-0"
+         style="background: linear-gradient(to bottom,
+           rgba(6,11,20,0.85) 0%,
+           rgba(6,11,20,0.60) 50%,
+           rgba(6,11,20,0.97) 100%);"></div>
+    <div class="absolute inset-0" style="background:
+      radial-gradient(ellipse 60% 40% at 20% 60%, rgba(120,229,145,0.06) 0%, transparent 65%),
+      radial-gradient(ellipse 50% 40% at 80% 40%, rgba(105,180,234,0.06) 0%, transparent 65%);"></div>
+  </div>
+
+  <div class="relative max-w-4xl mx-auto text-center px-6 pt-40 pb-24">
+    <div class="inline-flex items-center gap-2.5 card-glass rounded-full px-4 py-2 mb-8">
+      <span class="w-1.5 h-1.5 rounded-full bg-mw-green animate-pulse"></span>
+      <p class="text-xs font-display tracking-widest text-white/70 uppercase">16 · 17 · 18 Ottobre 2026 · Rimini Expo Centre</p>
+    </div>
+
+    <h1 class="font-display font-bold leading-[1.05] tracking-tight mb-6"
+        style="font-size: clamp(2.4rem, 6vw, 4.5rem);">
+      Area tecnica<br>
+      <span class="text-grad">sponsor.</span>
+    </h1>
+
+    <p class="text-white/60 text-lg leading-relaxed max-w-2xl mx-auto">
+      Qui trovi tutto quello che serve per arrivare pronto all'evento: grafiche, ticket, virtual booth, accesso, spedizioni e i contatti del team.
+    </p>
+  </div>
+</section>
+
+
+<!-- CONTATTI UTILI -->
+<section id="contatti-utili" class="py-20 relative overflow-hidden">
+  <div class="absolute inset-0" style="background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(120,229,145,0.05) 0%, transparent 60%);"></div>
+  <div class="relative max-w-2xl mx-auto px-6">
+    <div class="text-center mb-10 gsap-fade">
+      <p class="section-label mb-4">Contatti utili</p>
+      <h2 class="font-display text-4xl font-bold">Un solo riferimento,<br><span class="text-grad">per tutto quello che ti serve.</span></h2>
+    </div>
+
+    <div class="card-accent rounded-2xl p-8 text-center gsap-fade">
+      <span class="cat-chip mb-4">Sponsor e produzione</span>
+      <h4 class="font-display font-semibold text-2xl mb-1">Alessia Zannini</h4>
+      <p class="text-white/40 text-sm mb-6">Grafiche, ticket, virtual booth, logistica: scrivile via email, telefono o WhatsApp per qualsiasi richiesta.</p>
+      <div class="flex flex-wrap items-center justify-center gap-3">
+        <a href="mailto:a.zannini@wearemarketers.net" class="btn-outline px-6 py-2.5 rounded-full text-sm break-all">a.zannini@wearemarketers.net</a>
+        <a href="https://api.whatsapp.com/send/?phone=393520454209&text&type=phone_number&app_absent=0" target="_blank" rel="noopener" class="btn-outline px-6 py-2.5 rounded-full text-sm">Scrivi su WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- PROSSIMA SCADENZA -->
+<section class="pb-16">
+  <div class="max-w-2xl mx-auto px-6">
+    <div class="card-accent rounded-2xl p-7 text-center gsap-fade">
+      <p class="section-label mb-2">Prossima scadenza</p>
+      <p class="font-display font-bold text-3xl mb-1"><span id="countdown-days">Calcolo in corso</span></p>
+      <p class="text-white/60 text-sm mb-4" id="countdown-label"></p>
+      <a id="countdown-link" href="#calendario" class="text-mw-green text-sm hover:underline">Vedi il calendario completo</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- CALENDARIO -->
+<section id="calendario" class="py-24" style="background: rgba(10,16,28,0.8);">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-14 gsap-fade">
+      <p class="section-label mb-4">Calendario</p>
+      <h2 class="font-display text-4xl font-bold">Tutte le date,<br><span class="text-grad">mese per mese.</span></h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-5">
+
+      <!-- Agosto 2026 -->
+      <div class="card-glass rounded-2xl p-6 gsap-fade">
+        <h3 class="font-display font-semibold text-lg mb-1 text-center">Agosto 2026</h3>
+        <p class="text-white/40 text-xs text-center mb-4">31 luglio &rarr; 31 agosto: finestra di produzione grafiche stand</p>
+        <div class="grid grid-cols-7 gap-1 mb-4">
+          <span class="cal-cell cal-head">L</span><span class="cal-cell cal-head">M</span><span class="cal-cell cal-head">M</span><span class="cal-cell cal-head">G</span><span class="cal-cell cal-head">V</span><span class="cal-cell cal-head">S</span><span class="cal-cell cal-head">D</span>
+          <span class="cal-cell"></span><span class="cal-cell"></span><span class="cal-cell"></span><span class="cal-cell"></span><span class="cal-cell"></span><span class="cal-cell">1</span><span class="cal-cell">2</span>
+          <span class="cal-cell">3</span><span class="cal-cell">4</span><span class="cal-cell">5</span><span class="cal-cell">6</span><span class="cal-cell">7</span><span class="cal-cell">8</span><span class="cal-cell">9</span>
+          <span class="cal-cell">10</span><span class="cal-cell">11</span><span class="cal-cell">12</span><span class="cal-cell">13</span><span class="cal-cell">14</span><span class="cal-cell">15</span><span class="cal-cell">16</span>
+          <span class="cal-cell">17</span><span class="cal-cell">18</span><span class="cal-cell">19</span><span class="cal-cell">20</span><span class="cal-cell">21</span><span class="cal-cell">22</span><span class="cal-cell">23</span>
+          <span class="cal-cell">24</span><a href="#app" title="Da qui puoi prenotare una call con Alessia per il virtual booth" class="cal-cell cal-day-dot" style="--dc:120,229,145;">25</a><span class="cal-cell">26</span><span class="cal-cell">27</span><span class="cal-cell">28</span><span class="cal-cell">29</span><span class="cal-cell">30</span>
+          <span class="cal-cell">31</span><span class="cal-cell"></span><span class="cal-cell"></span><span class="cal-cell"></span><span class="cal-cell"></span><span class="cal-cell"></span><span class="cal-cell"></span>
+        </div>
+        <div class="space-y-2 border-t border-white/10 pt-4">
+          <a href="#app" class="cal-event"><span class="cal-event-dot" style="background:#78E591;"></span><span><strong class="text-white">25</strong> · Da qui puoi prenotare una call con Alessia per il virtual booth</span></a>
+          <a href="#grafiche" class="cal-event"><span class="cal-event-dot" style="background:#A78BFA;"></span><span>Nessuna consegna in agosto: la scadenza grafiche è il <strong class="text-white">10 settembre</strong>, vedi il mese successivo</span></a>
+        </div>
+      </div>
+
+      <!-- Settembre 2026 -->
+      <div class="card-glass rounded-2xl p-6 gsap-fade">
+        <h3 class="font-display font-semibold text-lg mb-4 text-center">Settembre 2026</h3>
+        <div class="grid grid-cols-7 gap-1 mb-4">
+          <span class="cal-cell cal-head">L</span><span class="cal-cell cal-head">M</span><span class="cal-cell cal-head">M</span><span class="cal-cell cal-head">G</span><span class="cal-cell cal-head">V</span><span class="cal-cell cal-head">S</span><span class="cal-cell cal-head">D</span>
+          <span class="cal-cell"></span><span class="cal-cell">1</span><span class="cal-cell">2</span><span class="cal-cell">3</span><span class="cal-cell">4</span><span class="cal-cell">5</span><span class="cal-cell">6</span>
+          <span class="cal-cell">7</span><span class="cal-cell">8</span><span class="cal-cell">9</span><a href="#grafiche" title="Consegna finale grafiche stand" class="cal-cell cal-day-dot" style="--dc:244,200,66;">10</a><span class="cal-cell">11</span><span class="cal-cell">12</span><span class="cal-cell">13</span>
+          <span class="cal-cell">14</span><span class="cal-cell">15</span><a href="#app" title="Apertura virtual booth ai partecipanti (circa)" class="cal-cell cal-day-dot" style="--dc:94,234,212;">16</a><span class="cal-cell">17</span><span class="cal-cell">18</span><span class="cal-cell">19</span><span class="cal-cell">20</span>
+          <span class="cal-cell">21</span><span class="cal-cell">22</span><span class="cal-cell">23</span><span class="cal-cell">24</span><span class="cal-cell">25</span><span class="cal-cell">26</span><span class="cal-cell">27</span>
+          <span class="cal-cell">28</span><span class="cal-cell">29</span><a href="#ticket" title="Data limite riscatto ticket gratuiti" class="cal-cell cal-day-dot" style="--dc:255,159,107;">30</a><span class="cal-cell"></span><span class="cal-cell"></span><span class="cal-cell"></span><span class="cal-cell"></span>
+        </div>
+        <div class="space-y-2 border-t border-white/10 pt-4">
+          <a href="#grafiche" class="cal-event"><span class="cal-event-dot" style="background:#F4C842;"></span><span><strong class="text-white">10</strong> · Consegna finale grafiche stand</span></a>
+          <a href="#app" class="cal-event"><span class="cal-event-dot" style="background:#5EEAD4;"></span><span><strong class="text-white">16</strong> · Apertura virtual booth ai partecipanti (circa, 30 giorni prima dell'evento)</span></a>
+          <a href="#ticket" class="cal-event"><span class="cal-event-dot" style="background:#FF9F6B;"></span><span><strong class="text-white">30</strong> · Data limite riscatto ticket gratuiti</span></a>
+        </div>
+      </div>
+
+      <!-- Ottobre 2026 -->
+      <div class="card-glass rounded-2xl p-6 gsap-fade">
+        <h3 class="font-display font-semibold text-lg mb-4 text-center">Ottobre 2026</h3>
+        <div class="grid grid-cols-7 gap-1 mb-4">
+          <span class="cal-cell cal-head">L</span><span class="cal-cell cal-head">M</span><span class="cal-cell cal-head">M</span><span class="cal-cell cal-head">G</span><span class="cal-cell cal-head">V</span><span class="cal-cell cal-head">S</span><span class="cal-cell cal-head">D</span>
+          <span class="cal-cell"></span><span class="cal-cell"></span><span class="cal-cell"></span><span class="cal-cell">1</span><span class="cal-cell">2</span><span class="cal-cell">3</span><span class="cal-cell">4</span>
+          <span class="cal-cell">5</span><span class="cal-cell">6</span><span class="cal-cell">7</span><a href="#spedizione" title="Finestra spedizioni materiale" class="cal-cell cal-day-dot" style="--dc:105,180,234;">8</a><a href="#spedizione" title="Finestra spedizioni materiale" class="cal-cell cal-day-dot" style="--dc:105,180,234;">9</a><a href="#spedizione" title="Finestra spedizioni materiale" class="cal-cell cal-day-dot" style="--dc:105,180,234;">10</a><a href="#spedizione" title="Finestra spedizioni materiale" class="cal-cell cal-day-dot" style="--dc:105,180,234;">11</a>
+          <a href="#spedizione" title="Finestra spedizioni materiale" class="cal-cell cal-day-dot" style="--dc:105,180,234;">12</a><a href="#spedizione" title="Ultimo giorno spedizioni, coincide con apertura Village" class="cal-cell cal-day-dot" style="--dc:105,180,234;">13</a><span class="cal-cell">14</span><a href="#accesso" title="Accredito e allestimento stand, aperitivo generale (non sponsor)" class="cal-cell cal-day-dot" style="--dc:244,114,182;">15</a><a href="#programma" title="Marketers World, 16-18 ottobre" class="cal-cell cal-day-dot" style="--dc:239,68,68;">16</a><a href="#programma" title="Marketers World, 16-18 ottobre" class="cal-cell cal-day-dot" style="--dc:239,68,68;">17</a><a href="#programma" title="Marketers World, 16-18 ottobre" class="cal-cell cal-day-dot" style="--dc:239,68,68;">18</a>
+          <span class="cal-cell">19</span><span class="cal-cell">20</span><span class="cal-cell">21</span><span class="cal-cell">22</span><span class="cal-cell">23</span><span class="cal-cell">24</span><span class="cal-cell">25</span>
+          <span class="cal-cell">26</span><span class="cal-cell">27</span><span class="cal-cell">28</span><span class="cal-cell">29</span><span class="cal-cell">30</span><span class="cal-cell">31</span><span class="cal-cell"></span>
+        </div>
+        <div class="space-y-2 border-t border-white/10 pt-4">
+          <a href="#spedizione" class="cal-event"><span class="cal-event-dot" style="background:#69B4EA;"></span><span><strong class="text-white">8 &rarr; 13</strong> · Finestra spedizioni materiale a Palacongressi</span></a>
+          <a href="#accesso" class="cal-event"><span class="cal-event-dot" style="background:#F472B6;"></span><span><strong class="text-white">15</strong> · Accredito e allestimento stand (aperitivo generale, non sponsor)</span></a>
+          <a href="#programma" class="cal-event"><span class="cal-event-dot" style="background:#EF4444;"></span><span><strong class="text-white">16 &rarr; 18</strong> · Marketers World</span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 mt-8 gsap-fade">
+      <p class="text-white/40 text-sm">Clicca su una data, sul calendario o nella lista sotto, per aprire la sezione con i dettagli.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- GRAFICHE STAND -->
+<section id="grafiche" class="py-24" style="background: rgba(10,16,28,0.8);">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="mb-14 gsap-fade">
+      <p class="section-label mb-4">Grafiche stand</p>
+      <h2 class="font-display text-4xl font-bold mb-4">Consegna i file,<br><span class="text-grad">al resto pensiamo noi.</span></h2>
+      <p class="text-white/50 max-w-lg">Stampa ed applicazione delle grafiche sono a carico del nostro team di produzione. Hai tempo dal 31 luglio al 31 agosto per preparare i file: la scadenza per l'invio è il 10 settembre 2026.</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-5">
+      <div class="card-glass rounded-2xl p-8 gsap-fade">
+        <div class="w-10 h-10 rounded-full bg-mw-green/10 border border-mw-green/20 flex items-center justify-center mb-5">
+          <span class="font-display font-bold text-mw-green text-sm">1</span>
+        </div>
+        <h3 class="font-display font-semibold text-lg mb-3">Leggi la guida tecnica</h3>
+        <p class="text-white/50 text-sm leading-relaxed mb-4">Su Canva trovi la guida con misure, formati e specifiche di ogni parete del tuo stand.</p>
+        <a href="https://www.canva.com/design/DAGujz02bQc/WNW3FLldlcn3QoUyt8bSCw/view?utm_content=DAGujz02bQc&amp;utm_campaign=designshare&amp;utm_medium=link2&amp;utm_source=uniquelinks&amp;utlId=hd578645a81#4" target="_blank" rel="noopener" class="text-mw-green text-sm font-display font-semibold hover:underline">Apri la guida su Canva</a>
+      </div>
+      <div class="card-glass rounded-2xl p-8 gsap-fade">
+        <div class="w-10 h-10 rounded-full bg-mw-green/10 border border-mw-green/20 flex items-center justify-center mb-5">
+          <span class="font-display font-bold text-mw-green text-sm">2</span>
+        </div>
+        <h3 class="font-display font-semibold text-lg mb-3">Prepara 2 file per parete</h3>
+        <p class="text-white/50 text-sm leading-relaxed">Per ogni parete servono 2 file alla stessa dimensione nominale ma con misure leggermente diverse, per esempio 296x250 e 300x250. In fase di montaggio le strutture possono avere piccole differenze: con due varianti scegliamo il file giusto senza ridimensionare nulla in post, e la qualità di stampa resta intatta.</p>
+      </div>
+      <div class="card-glass rounded-2xl p-8 gsap-fade">
+        <div class="w-10 h-10 rounded-full bg-mw-green/10 border border-mw-green/20 flex items-center justify-center mb-5">
+          <span class="font-display font-bold text-mw-green text-sm">3</span>
+        </div>
+        <h3 class="font-display font-semibold text-lg mb-3">Invia entro il 10 settembre</h3>
+        <p class="text-white/50 text-sm leading-relaxed mb-4">Manda i file ad Alessia Zannini, riferimento sponsor e produzione. Al resto (stampa e applicazione) pensa il nostro team.</p>
+        <a href="mailto:a.zannini@wearemarketers.net" class="text-mw-green text-sm font-display font-semibold hover:underline">a.zannini@wearemarketers.net</a>
+      </div>
+    </div>
+
+    <div class="card-glass rounded-2xl p-7 mt-5 gsap-fade">
+      <h4 class="font-display font-semibold text-base mb-2">Requisiti tecnici dello stand</h4>
+      <p class="text-white/50 text-sm leading-relaxed">Ogni stand include un allaccio elettrico standard da 1kW. Se il tuo stand richiede più potenza o una linea wifi dedicata (schermi, casse, dispositivi connessi), segnalalo in anticipo ad Alessia.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- TICKET -->
+<section id="ticket" class="py-24 relative overflow-hidden">
+  <div class="absolute inset-0" style="background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(105,180,234,0.04) 0%, transparent 70%);"></div>
+  <div class="relative max-w-7xl mx-auto px-6">
+    <div class="mb-14 gsap-fade">
+      <p class="section-label mb-4">Ticket</p>
+      <h2 class="font-display text-4xl font-bold mb-4">I biglietti del tuo pacchetto,<br><span class="text-grad">team e ospiti.</span></h2>
+      <p class="text-white/50 max-w-lg">Il numero di ticket inclusi dipende dal tuo contratto. I coupon per il riscatto sono personalizzati per azienda: te li invia via email il tuo account manager, per questo non li trovi pubblicati qui. Il riscatto va completato entro il <strong class="text-white">30 settembre 2026</strong>.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-5 max-w-3xl">
+      <div class="card-glass rounded-2xl p-8 flex flex-col gsap-fade">
+        <p class="text-xs text-white/40 uppercase tracking-widest mb-2">Inclusi nel pacchetto</p>
+        <h3 class="font-display text-2xl font-bold mb-4">Ticket team</h3>
+        <p class="text-white/50 text-sm leading-relaxed mb-6 flex-1">Sono i biglietti per le persone della tua azienda presenti all'evento. Si riscattano con il coupon che ricevi dal tuo account manager. Per ciascun membro del team servono 3 dati:</p>
+        <ul class="space-y-2 text-sm text-white/70 mb-2">
+          <li class="flex gap-3"><span class="text-mw-green flex-shrink-0 mt-0.5">✓</span> Nome</li>
+          <li class="flex gap-3"><span class="text-mw-green flex-shrink-0 mt-0.5">✓</span> Cognome</li>
+          <li class="flex gap-3"><span class="text-mw-green flex-shrink-0 mt-0.5">✓</span> Indirizzo email</li>
+        </ul>
+      </div>
+
+      <div class="card-accent rounded-2xl p-8 flex flex-col gsap-fade">
+        <p class="text-xs text-mw-green uppercase tracking-widest mb-2">Prezzo bloccato per sponsor</p>
+        <h3 class="font-display text-2xl font-bold mb-4">Ticket guest</h3>
+        <p class="text-white/50 text-sm leading-relaxed mb-6 flex-1">Non sono inclusi nel pacchetto, ma puoi acquistarli a un prezzo bloccato pensato per il tuo business: un modo semplice per invitare clienti e prospect all'evento. Si richiedono con un coupon personalizzato inviato dal tuo account manager.</p>
+        <div class="bg-mw-green/10 border border-mw-green/20 rounded-xl p-4">
+          <p class="font-display text-2xl font-bold text-mw-green">150€ <span class="text-sm font-medium text-white/60">+ iva cadauno</span></p>
+          <p class="text-xs text-white/50 mt-2">Richiedili al tuo account manager.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- APP / VIRTUAL BOOTH -->
+<section id="app" class="py-24" style="background: linear-gradient(180deg, rgba(6,11,20,1) 0%, rgba(10,17,30,1) 100%);">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <div class="gsap-fade">
+        <p class="section-label mb-4">App e virtual booth</p>
+        <h2 class="font-display text-4xl font-bold mb-6">Il tuo stand apre<br><span class="text-grad">30 giorni prima dell'evento.</span></h2>
+        <p class="text-white/60 leading-relaxed mb-6">
+          Ogni sponsor ha uno stand virtuale nell'app Marketers World, attivo già un mese prima di Rimini. Puoi presentare il brand, pubblicare contenuti e contattare i partecipanti in anticipo, quando l'attenzione è alta e le agende sono ancora libere.
+        </p>
+        <p class="text-white/60 leading-relaxed mb-6">
+          Per personalizzarlo riceverai via email un wizard con le linee guida, pensato per essere autonomo: non serve prenotare nulla in anticipo.
+        </p>
+        <p class="text-white/60 leading-relaxed">
+          Se hai bisogno di supporto in più, puoi pianificare una call con <a href="#contatti-utili" class="text-mw-green hover:underline">Alessia</a> a partire dal 25 agosto 2026.
+        </p>
+      </div>
+      <div class="gsap-fade">
+        <div class="relative">
+          <div class="absolute -inset-8 rounded-3xl" style="background: radial-gradient(ellipse at center, rgba(120,229,145,0.12), rgba(105,180,234,0.12)); filter: blur(50px);"></div>
+          <div class="relative card-glass rounded-2xl p-8">
+            <h4 class="font-display font-semibold text-base mb-5">Cosa fai con il virtual booth</h4>
+            <ul class="space-y-3">
+              <li class="flex gap-3 text-sm text-white/70"><span class="text-mw-green flex-shrink-0 mt-0.5">✓</span> Profilo brand visibile a tutti i partecipanti</li>
+              <li class="flex gap-3 text-sm text-white/70"><span class="text-mw-green flex-shrink-0 mt-0.5">✓</span> Contatto diretto con i partecipanti prima dell'evento</li>
+              <li class="flex gap-3 text-sm text-white/70"><span class="text-mw-green flex-shrink-0 mt-0.5">✓</span> Materiali, offerte e contenuti caricati in autonomia</li>
+              <li class="flex gap-3 text-sm text-white/70"><span class="text-mw-green flex-shrink-0 mt-0.5">✓</span> Appuntamenti allo stand fissati già dalle settimane precedenti</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- WORKSHOP -->
+<section id="workshop" class="py-24">
+  <div class="max-w-4xl mx-auto px-6">
+    <div class="mb-10 gsap-fade">
+      <div class="inline-flex items-center gap-2.5 card-glass rounded-full px-4 py-2 mb-6">
+        <span class="w-1.5 h-1.5 rounded-full bg-mw-blue"></span>
+        <p class="text-xs font-display tracking-widest text-white/70 uppercase">Solo se il tuo pacchetto lo include</p>
+      </div>
+      <p class="section-label mb-4">Workshop del venerdì</p>
+      <h2 class="font-display text-4xl font-bold mb-4">Il tuo momento<br><span class="text-grad">sul palco dei workshop.</span></h2>
+      <p class="text-white/50 max-w-xl">I pacchetti con workshop prevedono uno slot il venerdì. Il riferimento organizzativo per contenuti, orari e sala è Giulia Poletti.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-5">
+      <div class="card-glass rounded-2xl p-8 gsap-fade">
+        <h3 class="font-display font-semibold text-lg mb-3">Organizzazione</h3>
+        <p class="text-white/50 text-sm leading-relaxed mb-4">Scrivi a Giulia per definire titolo, speaker e dettagli operativi del tuo workshop.</p>
+        <a href="mailto:g.poletti@wearemarketers.net" class="text-mw-green text-sm font-display font-semibold hover:underline">g.poletti@wearemarketers.net</a>
+      </div>
+      <div class="card-glass rounded-2xl p-8 gsap-fade">
+        <h3 class="font-display font-semibold text-lg mb-3">Card per i social</h3>
+        <p class="text-white/50 text-sm leading-relaxed">Non devi produrre nulla: Giulia ti fornisce una card grafica con lo speaker e i dettagli del workshop, pronta da condividere sui vostri profili social per costruire attesa prima dell'evento.</p>
+      </div>
+    </div>
+
+    <div class="card-accent rounded-2xl p-7 mt-5 gsap-fade">
+      <h4 class="font-display font-semibold text-base mb-2">Canva Pro incluso</h4>
+      <p class="text-white/50 text-sm leading-relaxed">Grazie alla collaborazione con Canva, ogni sponsor riceve Canva Pro gratuito per 3 mesi. Il workshop va costruito sul template Canva che il team ha già preparato con tutte le indicazioni: a voi basta riempirlo con contenuti utili per chi partecipa.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ACCESSO E LOGISTICA -->
+<section id="accesso" class="py-24" style="background: rgba(10,16,28,0.8);">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="mb-14 gsap-fade">
+      <p class="section-label mb-4">Accesso e logistica</p>
+      <h2 class="font-display text-4xl font-bold mb-4">Arrivo, allestimento<br><span class="text-grad">e benvenuto.</span></h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div class="card-glass rounded-2xl p-7 gsap-fade">
+        <h4 class="font-display font-semibold text-base mb-3">Registrazione espositore</h4>
+        <p class="text-white/50 text-sm leading-relaxed mb-4">Prima dell'evento ogni persona del tuo team va registrata online come espositore al Palacongressi di Rimini.</p>
+        <span class="todo-link">[DA INSERIRE: link registrazione espositore Vivaticket 2026]</span>
+      </div>
+      <div class="card-accent rounded-2xl p-7 gsap-fade">
+        <h4 class="font-display font-semibold text-base mb-3">Accesso e allestimento</h4>
+        <p class="text-white/50 text-sm leading-relaxed">Giovedì <strong class="text-white">15 ottobre, dalle 15:00 alle 17:00</strong>, finestra per entrare al Palacongressi e allestire lo stand. Dalle <strong class="text-white">18:30</strong> c'è l'aperitivo di apertura generale, aperto a partecipanti e clienti: non è un evento riservato agli sponsor, ma è un buon momento per essere presenti.</p>
+      </div>
+      <div class="card-glass rounded-2xl p-7 gsap-fade">
+        <h4 class="font-display font-semibold text-base mb-3">Badge e accrediti</h4>
+        <p class="text-white/50 text-sm leading-relaxed">Il team sponsor riceve un badge con cordino rosso, riconoscibile in tutta l'area evento. Il ritiro avviene al desk accrediti, generalmente il giovedì insieme all'allestimento dello stand.</p>
+      </div>
+      <div class="card-glass rounded-2xl p-7 gsap-fade">
+        <h4 class="font-display font-semibold text-base mb-3">Parcheggio</h4>
+        <p class="text-white/50 text-sm leading-relaxed">Parcheggio libero nella zona antistante e sotto il Palacongressi. Nessun pass richiesto.</p>
+      </div>
+    </div>
+
+    <div class="card-glass rounded-2xl p-7 mt-5 gsap-fade md:flex items-center justify-between gap-8">
+      <div>
+        <h4 class="font-display font-semibold text-base mb-2">Referente on-site durante l'evento</h4>
+        <p class="text-white/50 text-sm leading-relaxed">Per qualsiasi necessità nei giorni dell'evento (accessi, stand, imprevisti sul posto) il riferimento è sempre <strong class="text-white">Alessia Zannini</strong>, vedi i contatti in alto.</p>
+      </div>
+      <a href="#contatti-utili" class="btn-outline px-6 py-2.5 rounded-full text-sm inline-block flex-shrink-0 mt-4 md:mt-0 whitespace-nowrap">Vai ai contatti</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- SPEDIZIONE MATERIALE -->
+<section id="spedizione" class="py-24 relative overflow-hidden">
+  <div class="absolute inset-0" style="background: radial-gradient(ellipse 60% 50% at 50% 40%, rgba(120,229,145,0.05) 0%, transparent 65%);"></div>
+  <div class="relative max-w-5xl mx-auto px-6">
+    <div class="text-center mb-14 gsap-fade">
+      <p class="section-label mb-4">Spedizione materiale</p>
+      <h2 class="font-display text-4xl font-bold">Dove spedire<br><span class="text-grad">il materiale per lo stand.</span></h2>
+    </div>
+
+    <div class="grid md:grid-cols-5 gap-6 items-start">
+      <div class="md:col-span-3 card-accent rounded-2xl p-8 gsap-fade">
+        <p class="text-xs text-mw-green uppercase tracking-widest mb-4">Indirizzo di spedizione</p>
+        <div id="shipping-address" class="font-display text-lg leading-relaxed mb-6">
+          PalaServip<br>
+          Palacongressi di Rimini<br>
+          Via della Fiera 23/C<br>
+          47923 Rimini
+        </div>
+        <div class="space-y-2 text-sm text-white/70 mb-6">
+          <p>Referente ricezione: <strong class="text-white">Filippo Bortoletto</strong></p>
+          <p>Telefono: <a href="tel:0541787203" class="text-mw-green hover:underline">0541 787203</a> / <a href="tel:0541718842" class="text-mw-green hover:underline">0541 718842</a></p>
+          <p>Cellulare: <a href="tel:3292136854" class="text-mw-green hover:underline">329 2136854</a></p>
+        </div>
+        <button id="copy-address" class="btn-outline px-6 py-2.5 rounded-full text-sm">Copia indirizzo</button>
+      </div>
+      <div class="md:col-span-2 space-y-4">
+        <div class="card-glass rounded-2xl p-6 gsap-fade">
+          <h4 class="font-display font-semibold text-sm mb-2">Quando spedire</h4>
+          <p class="text-white/50 text-sm leading-relaxed">Dall'<strong class="text-white">8 al 13 ottobre</strong>, direttamente a Palacongressi.</p>
+        </div>
+        <div class="card-glass rounded-2xl p-6 gsap-fade">
+          <h4 class="font-display font-semibold text-sm mb-2">Etichetta sul collo</h4>
+          <p class="text-white/50 text-sm leading-relaxed">Scrivi sempre <strong class="text-white">"Marketers World"</strong> su ogni collo spedito.</p>
+        </div>
+        <div class="card-glass rounded-2xl p-6 gsap-fade">
+          <h4 class="font-display font-semibold text-sm mb-2">Materiale pesante o ingombrante</h4>
+          <p class="text-white/50 text-sm leading-relaxed">Se il materiale richiede mezzi per lo scarico, segnalalo in anticipo ad Alessia.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- DOCUMENTI E PROGRAMMA -->
+<section id="documenti-programma" class="py-24" style="background: linear-gradient(180deg, rgba(6,11,20,1) 0%, rgba(10,17,30,1) 100%);">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-14 gsap-fade">
+      <p class="section-label mb-4">Documenti e programma</p>
+      <h2 class="font-display text-4xl font-bold mb-4">I file da scaricare<br><span class="text-grad">e il quadro delle giornate.</span></h2>
+    </div>
+
+    <!-- Riga 1: Documenti utili -->
+    <div id="documenti" style="scroll-margin-top: 90px;" class="mb-16">
+      <h3 class="font-display font-semibold text-2xl mb-8 gsap-fade">Documenti utili</h3>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div class="card-glass rounded-2xl p-7 flex flex-col gsap-fade">
+          <h4 class="font-display font-semibold text-base mb-3">Mappa evento</h4>
+          <p class="text-white/50 text-sm leading-relaxed mb-4 flex-1">Planimetria generale di Palacongressi e Marketers Village con posizione degli stand e delle aree.</p>
+          <span class="todo-link">[DA INSERIRE: link mappa evento PDF]</span>
+        </div>
+        <div class="card-glass rounded-2xl p-7 flex flex-col gsap-fade">
+          <h4 class="font-display font-semibold text-base mb-3">Linee guida grafiche stand</h4>
+          <p class="text-white/50 text-sm leading-relaxed mb-4 flex-1">La guida Canva con misure, formati e specifiche di ogni parete, la stessa della sezione <a href="#grafiche" class="text-mw-green hover:underline">Grafiche stand</a>.</p>
+          <a href="https://www.canva.com/design/DAGujz02bQc/WNW3FLldlcn3QoUyt8bSCw/view?utm_content=DAGujz02bQc&amp;utm_campaign=designshare&amp;utm_medium=link2&amp;utm_source=uniquelinks&amp;utlId=hd578645a81#4" target="_blank" rel="noopener" class="text-mw-green text-sm font-display font-semibold hover:underline">Apri la guida su Canva</a>
+        </div>
+        <div class="card-glass rounded-2xl p-7 flex flex-col gsap-fade">
+          <h4 class="font-display font-semibold text-base mb-3">Accesso e sicurezza cantiere</h4>
+          <p class="text-white/50 text-sm leading-relaxed mb-4 flex-1">Norme di accesso, sicurezza e circolazione mezzi durante il montaggio dello stand.</p>
+          <span class="todo-link">[DA INSERIRE: link documento accesso cantiere]</span>
+        </div>
+        <div class="card-glass rounded-2xl p-7 flex flex-col gsap-fade">
+          <h4 class="font-display font-semibold text-base mb-3">Modulo accessi mezzi pesanti</h4>
+          <p class="text-white/50 text-sm leading-relaxed mb-4 flex-1">Richiesta accessi per mezzi pesanti e scarico merci, da compilare se serve supporto per materiale ingombrante.</p>
+          <span class="todo-link">[DA INSERIRE: link modulo accessi mezzi]</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Riga 2: Programma delle giornate -->
+    <div id="programma" style="scroll-margin-top: 90px;">
+      <h3 class="font-display font-semibold text-2xl mb-8 gsap-fade">Programma delle giornate</h3>
+      <div class="space-y-4">
+        <div class="card-glass rounded-2xl p-7 md:flex gap-10 gsap-fade">
+          <p class="font-display font-bold text-mw-blue md:w-64 flex-shrink-0 mb-3 md:mb-0">Martedì 13 - Lunedì 19 ottobre</p>
+          <div>
+            <h4 class="font-display font-semibold text-base mb-2">Marketers Village</h4>
+            <p class="text-white/50 text-sm leading-relaxed">Sei giorni di village con soggiorno, attività e networking, aperto prima e dopo il main event.</p>
+          </div>
+        </div>
+        <div class="card-glass rounded-2xl p-7 md:flex gap-10 gsap-fade">
+          <p class="font-display font-bold text-mw-green md:w-64 flex-shrink-0 mb-3 md:mb-0">Giovedì 15 ottobre</p>
+          <div>
+            <h4 class="font-display font-semibold text-base mb-2">Accredito partecipanti</h4>
+            <p class="text-white/50 text-sm leading-relaxed">Check-in generale, con l'aperitivo di apertura serale aperto a tutti (non riservato agli sponsor). Il tuo stand si allestisce nello stesso giorno, vedi la sezione <a href="#accesso" class="text-mw-green hover:underline">Accesso e logistica</a> per i dettagli.</p>
+          </div>
+        </div>
+        <div class="card-glass rounded-2xl p-7 md:flex gap-10 gsap-fade">
+          <p class="font-display font-bold text-mw-blue md:w-64 flex-shrink-0 mb-3 md:mb-0">Venerdì 16 ottobre</p>
+          <div>
+            <h4 class="font-display font-semibold text-base mb-2">Workshop e attività verticali</h4>
+            <p class="text-white/50 text-sm leading-relaxed">Palacongressi, giorno dei workshop e delle attività verticali.</p>
+          </div>
+        </div>
+        <div class="card-glass rounded-2xl p-7 md:flex gap-10 gsap-fade">
+          <p class="font-display font-bold text-mw-blue md:w-64 flex-shrink-0 mb-3 md:mb-0">Sabato 17 e domenica 18 ottobre</p>
+          <div>
+            <h4 class="font-display font-semibold text-base mb-2">Mainstage</h4>
+            <p class="text-white/50 text-sm leading-relaxed">Palacongressi, mainstage con gli speaker principali.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- UPSELL -->
+<section id="upsell" class="py-24 relative overflow-hidden">
+  <div class="absolute inset-0" style="background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(105,180,234,0.05) 0%, transparent 60%);"></div>
+  <div class="relative max-w-7xl mx-auto px-6">
+    <div class="text-center mb-14 gsap-fade">
+      <p class="section-label mb-4">Upsell</p>
+      <h2 class="font-display text-4xl lg:text-5xl font-bold mb-4">Vuoi ampliare<br><span class="text-grad">la tua presenza?</span></h2>
+      <p class="text-white/50 max-w-md mx-auto">Oltre al pacchetto firmato, ci sono altre attivazioni disponibili. Scrivi ad Alessia per sapere cosa è ancora libero.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div class="card-accent rounded-2xl p-7 flex flex-col gsap-fade">
+        <h4 class="font-display font-semibold text-base mb-3">🎯 Piani talent con i creator</h4>
+        <p class="text-white/50 text-sm leading-relaxed mb-4 flex-1">Abbiamo oltre 200 talent attivati su categorie diverse. Nel 2025, cento di loro hanno generato 23 milioni di utenti unici con i contenuti condivisi su World e sui brand presenti. Diventiamo la tua talent agency per contenuti UGC o campagne di visibilità prima e dopo l'evento. Scrivi ad <a href="#contatti-utili" class="text-mw-green hover:underline">Alessia</a> per il mix giusto.</p>
+        <a href="creator-network-mw26.html" class="text-mw-green text-sm font-display font-semibold hover:underline">Vai alla pagina Creator Network</a>
+      </div>
+      <div class="card-glass rounded-2xl p-7 flex flex-col gsap-fade">
+        <h4 class="font-display font-semibold text-base mb-3">📺 TV e arredamento stand</h4>
+        <p class="text-white/50 text-sm leading-relaxed flex-1">Ogni stand include l'arredamento base. Se ti serve una televisione o un allestimento diverso, contattaci: lo gestiamo insieme al nostro allestitore, senza sorprese il giorno del montaggio. Scrivi ad <a href="#contatti-utili" class="text-mw-green hover:underline">Alessia</a> per parlarne.</p>
+      </div>
+      <div class="card-glass rounded-2xl p-7 flex flex-col gsap-fade">
+        <h4 class="font-display font-semibold text-base mb-3">🖨️ Comunicazione stampata</h4>
+        <p class="text-white/50 text-sm leading-relaxed flex-1">Flyer nella bag di ogni partecipante, mattonelle 30x30 brandizzate lungo i percorsi del Palacongressi dove camminano migliaia di persone, specchi dei bagni personalizzati. Possiamo applicare la tua comunicazione grafica in molti altri punti della struttura. Scrivi ad <a href="#contatti-utili" class="text-mw-green hover:underline">Alessia</a> per la mappa degli spazi disponibili.</p>
+      </div>
+      <div class="card-glass rounded-2xl p-7 flex flex-col gsap-fade">
+        <h4 class="font-display font-semibold text-base mb-3">🍽️ Food pass</h4>
+        <p class="text-white/50 text-sm leading-relaxed flex-1">Stiamo valutando, insieme al fornitore F&amp;B, un food pass per il tuo team: accesso a una lounge riservata con buffet a pranzo. Serve un minimo di 50 adesioni per attivarlo. Fai sapere ad <a href="#contatti-utili" class="text-mw-green hover:underline">Alessia</a> se ti interessa.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- FAQ -->
+<section id="faq" class="py-24">
+  <div class="max-w-3xl mx-auto px-6">
+    <div class="text-center mb-10 gsap-fade">
+      <p class="section-label mb-4">FAQ</p>
+      <h2 class="font-display text-4xl font-bold mb-4">Domande frequenti<br><span class="text-grad">di logistica.</span></h2>
+      <p class="text-white/40 text-sm max-w-md mx-auto">Le risposte seguono la prassi già in uso: se qualcosa è cambiato quest'anno, verifica con Alessia prima di fare affidamento su questa pagina.</p>
+    </div>
+    <div class="space-y-3">
+
+      <details class="card-glass rounded-2xl overflow-hidden gsap-fade group">
+        <summary class="flex items-center justify-between p-6 hover:bg-white/[0.02] transition-colors">
+          <span class="font-display font-medium">Posso spedire il materiale prima dell'8 ottobre?</span>
+          <span class="faq-icon text-mw-green text-xl flex-shrink-0 ml-4">+</span>
+        </summary>
+        <div class="px-6 pb-6 text-white/60 text-sm leading-relaxed border-t border-white/06 pt-4">
+          Meglio di no. PalaServip riceve i materiali sponsor nella finestra dedicata, dall'8 al 13 ottobre, per gestire lo spazio di stoccaggio. Se hai un'esigenza particolare, scrivi ad Alessia prima di spedire.
+        </div>
+      </details>
+
+      <details class="card-glass rounded-2xl overflow-hidden gsap-fade group">
+        <summary class="flex items-center justify-between p-6 hover:bg-white/[0.02] transition-colors">
+          <span class="font-display font-medium">Cosa succede se il materiale arriva in ritardo?</span>
+          <span class="faq-icon text-mw-green text-xl flex-shrink-0 ml-4">+</span>
+        </summary>
+        <div class="px-6 pb-6 text-white/60 text-sm leading-relaxed border-t border-white/06 pt-4">
+          Il tuo stand viene comunque allestito dal 15 ottobre, con il materiale disponibile in quel momento. Avvisa il prima possibile Filippo Bortoletto o Alessia se prevedi un ritardo.
+        </div>
+      </details>
+
+      <details class="card-glass rounded-2xl overflow-hidden gsap-fade group">
+        <summary class="flex items-center justify-between p-6 hover:bg-white/[0.02] transition-colors">
+          <span class="font-display font-medium">Posso modificare le grafiche dopo averle inviate?</span>
+          <span class="faq-icon text-mw-green text-xl flex-shrink-0 ml-4">+</span>
+        </summary>
+        <div class="px-6 pb-6 text-white/60 text-sm leading-relaxed border-t border-white/06 pt-4">
+          Fino al 10 settembre sì. Dopo quella data diventa più complicato per i tempi di stampa: se hai dubbi su un file già inviato, scrivi subito ad Alessia.
+        </div>
+      </details>
+
+      <details class="card-glass rounded-2xl overflow-hidden gsap-fade group">
+        <summary class="flex items-center justify-between p-6 hover:bg-white/[0.02] transition-colors">
+          <span class="font-display font-medium">Il virtual booth è obbligatorio?</span>
+          <span class="faq-icon text-mw-green text-xl flex-shrink-0 ml-4">+</span>
+        </summary>
+        <div class="px-6 pb-6 text-white/60 text-sm leading-relaxed border-t border-white/06 pt-4">
+          È incluso nel pacchetto ma l'uso è facoltativo. Se non personalizzi il profilo con il wizard, il tuo stand virtuale resta comunque visibile con i dati base.
+        </div>
+      </details>
+
+      <details class="card-glass rounded-2xl overflow-hidden gsap-fade group">
+        <summary class="flex items-center justify-between p-6 hover:bg-white/[0.02] transition-colors">
+          <span class="font-display font-medium">Chi accredita il mio team il giorno dell'evento?</span>
+          <span class="faq-icon text-mw-green text-xl flex-shrink-0 ml-4">+</span>
+        </summary>
+        <div class="px-6 pb-6 text-white/60 text-sm leading-relaxed border-t border-white/06 pt-4">
+          Il ritiro badge, con cordino rosso per gli sponsor, avviene al desk accrediti il giovedì, in occasione dell'allestimento dello stand.
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- DOPO L'EVENTO -->
+<section id="dopo-evento" class="py-24" style="background: rgba(10,16,28,0.8);">
+  <div class="max-w-4xl mx-auto px-6">
+    <div class="text-center mb-14 gsap-fade">
+      <p class="section-label mb-4">Dopo l'evento</p>
+      <h2 class="font-display text-4xl font-bold">Cosa succede<br><span class="text-grad">dopo Rimini.</span></h2>
+      <p class="text-white/50 max-w-md mx-auto mt-4">Entro un paio di settimane dalla chiusura ricevi via email dal team:</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-5 mb-10">
+      <div class="card-glass rounded-2xl p-7 gsap-fade">
+        <h4 class="font-display font-semibold text-base mb-3">Materiali media</h4>
+        <p class="text-white/50 text-sm leading-relaxed">Link a foto e video selezionati dell'evento, utilizzabili per la tua comunicazione.</p>
+      </div>
+      <div class="card-glass rounded-2xl p-7 gsap-fade">
+        <h4 class="font-display font-semibold text-base mb-3">Questionario di feedback</h4>
+        <p class="text-white/50 text-sm leading-relaxed">Poche domande sulla tua esperienza da sponsor. Ci serve per migliorare l'edizione successiva.</p>
+      </div>
+      <div class="card-glass rounded-2xl p-7 gsap-fade">
+        <h4 class="font-display font-semibold text-base mb-3">Registrazioni dei contenuti</h4>
+        <p class="text-white/50 text-sm leading-relaxed">Accesso alle registrazioni degli speech, disponibili anche su Marketers PRO per chi è iscritto.</p>
+      </div>
+    </div>
+
+    <div class="card-accent rounded-2xl p-8 gsap-fade">
+      <h4 class="font-display font-semibold text-base mb-3">La call di chiusura</h4>
+      <p class="text-white/50 text-sm leading-relaxed">Nelle settimane successive fissiamo una call con il team commerciale (Alessia Zannini insieme a Mattia Bonetti) per fare il punto sui risultati e pianificare l'anno successivo, in continuità con la partnership.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer style="background: #030710; border-top: 1px solid rgba(255,255,255,0.06);">
+  <div class="max-w-7xl mx-auto px-6 py-12">
+    <div class="grid md:grid-cols-4 gap-10 mb-10">
+      <div class="md:col-span-1">
+        <img src="https://marketersworld.net/wp-content/uploads/2023/11/Logo-MarketersWorld-by-wearemarketers.png"
+             alt="Marketers World" class="h-7 w-auto mb-4 opacity-70">
+        <p class="text-xs text-white/30 leading-relaxed">16 · 17 · 18 Ottobre 2026<br>Rimini, Italia</p>
+      </div>
+      <div>
+        <h5 class="font-display font-semibold text-xs uppercase tracking-widest text-white/40 mb-4">Area sponsor</h5>
+        <ul class="space-y-2">
+          <li><a href="#calendario" class="text-sm text-white/50 hover:text-white transition-colors">Calendario</a></li>
+          <li><a href="#grafiche" class="text-sm text-white/50 hover:text-white transition-colors">Grafiche stand</a></li>
+          <li><a href="#ticket" class="text-sm text-white/50 hover:text-white transition-colors">Ticket</a></li>
+          <li><a href="#spedizione" class="text-sm text-white/50 hover:text-white transition-colors">Spedizione materiale</a></li>
+          <li><a href="#documenti" class="text-sm text-white/50 hover:text-white transition-colors">Documenti utili</a></li>
+          <li><a href="#programma" class="text-sm text-white/50 hover:text-white transition-colors">Programma delle giornate</a></li>
+          <li><a href="#faq" class="text-sm text-white/50 hover:text-white transition-colors">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5 class="font-display font-semibold text-xs uppercase tracking-widest text-white/40 mb-4">Risorse</h5>
+        <ul class="space-y-2">
+          <li><a href="https://marketersworld.net/testimonianze/" class="text-sm text-white/50 hover:text-white transition-colors">Testimonianze</a></li>
+          <li><a href="https://marketersworld.net/risorse" class="text-sm text-white/50 hover:text-white transition-colors">Risorse degli speech</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5 class="font-display font-semibold text-xs uppercase tracking-widest text-white/40 mb-4">Team</h5>
+        <ul class="space-y-2">
+          <li><a href="#contatti-utili" class="text-sm text-white/50 hover:text-white transition-colors">Contatti</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-white/06 pt-8 flex flex-wrap items-center justify-between gap-4">
+      <p class="text-xs text-white/30">Copyright 2026 © Marketers Company srl | p.iva 01976200384</p>
+      <a href="https://wearemarketers.net/privacy-policy/" class="text-xs text-white/30 hover:text-white/60 transition-colors">Privacy Policy</a>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Nav scroll behavior
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 60) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  });
+
+  // Fade-in on scroll
+  gsap.utils.toArray('.gsap-fade').forEach(el => {
+    gsap.to(el, {
+      opacity: 1, y: 0, duration: 0.7, ease: 'power2.out',
+      scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' }
+    });
+  });
+
+  // Countdown prossima scadenza
+  (function () {
+    const deadlines = [
+      { date: '2026-08-25', label: 'Da qui puoi prenotare una call con Alessia per il virtual booth', href: '#app' },
+      { date: '2026-09-10', label: 'Consegna finale grafiche stand', href: '#grafiche' },
+      { date: '2026-09-16', label: 'Apertura virtual booth ai partecipanti (circa)', href: '#app' },
+      { date: '2026-09-30', label: 'Data limite riscatto ticket gratuiti', href: '#ticket' },
+      { date: '2026-10-08', label: 'Apertura finestra spedizioni', href: '#spedizione' },
+      { date: '2026-10-13', label: 'Ultimo giorno utile per spedizioni', href: '#spedizione' },
+      { date: '2026-10-15', label: 'Accredito e allestimento stand', href: '#accesso' },
+      { date: '2026-10-16', label: 'Marketers World, 16-18 ottobre', href: '#programma' }
+    ];
+    const daysEl = document.getElementById('countdown-days');
+    const labelEl = document.getElementById('countdown-label');
+    const linkEl = document.getElementById('countdown-link');
+    if (!daysEl) return;
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const next = deadlines.find(d => new Date(d.date + 'T00:00:00') >= today);
+    if (next) {
+      const diff = Math.round((new Date(next.date + 'T00:00:00') - today) / 86400000);
+      daysEl.textContent = diff === 0 ? 'Oggi' : (diff + (diff === 1 ? ' giorno' : ' giorni'));
+      labelEl.textContent = next.label;
+      linkEl.href = next.href;
+      linkEl.textContent = 'Vai alla sezione';
+    } else {
+      daysEl.textContent = 'Evento concluso';
+      labelEl.textContent = 'Marketers World 2026 si è chiuso';
+      linkEl.href = '#dopo-evento';
+      linkEl.textContent = "Vedi cosa succede dopo l'evento";
+    }
+  })();
+
+  // Copia indirizzo di spedizione
+  const copyBtn = document.getElementById('copy-address');
+  if (copyBtn) {
+    copyBtn.addEventListener('click', () => {
+      const text = 'PalaServip, Palacongressi di Rimini, Via della Fiera 23/C, 47923 Rimini. Rif. Filippo Bortoletto. Scrivere "Marketers World" sul collo.';
+      navigator.clipboard.writeText(text).then(() => {
+        copyBtn.textContent = 'Indirizzo copiato';
+        setTimeout(() => { copyBtn.textContent = 'Copia indirizzo'; }, 2000);
+      });
+    });
+  }
+</script>
+
+</body>
+</html>
