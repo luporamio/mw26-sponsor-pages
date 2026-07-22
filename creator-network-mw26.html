@@ -141,16 +141,6 @@
       color: rgba(255,255,255,0.45);
     }
 
-    .tipo-tag {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.58rem; font-weight: 700;
-      letter-spacing: 0.06em; padding: 2px 8px;
-      border-radius: 99px; text-transform: uppercase;
-    }
-    .tipo-i { background: rgba(105,180,234,0.14); color: #69B4EA; }
-    .tipo-s { background: rgba(244,200,66,0.14);  color: #F4C842; }
-    .tipo-o { background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.4); }
-
     /* Package cards */
     .pkg {
       background: rgba(255,255,255,0.04);
@@ -186,29 +176,6 @@
 
     .filter-scroll { overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none; }
     .filter-scroll::-webkit-scrollbar { display: none; }
-
-    /* Tipo tabs */
-    .tipo-tab {
-      padding: 10px 24px; border-radius: 99px;
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.83rem; font-weight: 600;
-      cursor: pointer; transition: all 0.25s;
-      border: 1.5px solid rgba(255,255,255,0.08);
-      background: rgba(255,255,255,0.04);
-      color: rgba(255,255,255,0.45);
-      white-space: nowrap;
-    }
-    .tipo-tab:hover { border-color: rgba(255,255,255,0.2); color: rgba(255,255,255,0.75); }
-    .tipo-tab.active-creator {
-      background: rgba(120,229,145,0.12);
-      border-color: rgba(120,229,145,0.45);
-      color: #9FF9B4;
-    }
-    .tipo-tab.active-influencer {
-      background: rgba(105,180,234,0.12);
-      border-color: rgba(105,180,234,0.45);
-      color: #69B4EA;
-    }
 
     /* Follower range chips */
     .fl-chip {
@@ -516,20 +483,8 @@
         Creator attivabili. <span class="text-grad">Scegli il tuo pacchetto. 🎯</span>
       </h2>
       <p id="network-subtitle" class="text-white/50 max-w-xl">
-        112 creator confermati con attivazioni sponsor disponibili: Reel, Stories, ADV, codici affiliazione. Filtra per settore e followers per trovare il profilo giusto per il tuo brand.
+        192 creator confermati (184 World + 8 Village) con attivazioni sponsor disponibili: Reel, Stories, ADV, codici affiliazione. Filtra per settore e followers per trovare il profilo giusto per il tuo brand.
       </p>
-    </div>
-
-    <!-- Tipo tabs -->
-    <div class="flex gap-3 mb-7" id="tipo-tabs">
-      <button class="tipo-tab active-creator" data-tipo="creator">✦ Creator <span id="tab-creator-count" class="opacity-60 text-xs"></span></button>
-      <button class="tipo-tab" data-tipo="influencer">Influencer &amp; Ospiti <span id="tab-influencer-count" class="opacity-60 text-xs"></span></button>
-    </div>
-
-    <!-- Info banner (visibile su tab influencer) -->
-    <div id="influencer-banner" style="display:none;" class="card-glass rounded-xl px-5 py-3 mb-7 flex items-start gap-3">
-      <span style="font-size:1.1rem;flex-shrink:0;">ℹ️</span>
-      <p class="text-sm text-white/55 leading-relaxed">Questi talent sono presenti a MW2026 come ospiti, speaker o influencer invitati. Non sono inclusi nei pacchetti sponsor standard: contatta Alessia per valutare attivazioni personalizzate.</p>
     </div>
 
     <!-- Filtri -->
@@ -698,31 +653,58 @@ gsap.utils.toArray('.gsap-fade').forEach(el => {
 // CREATOR DATA — da foglio MW2026 Creator/Influencer
 // -------------------------------------------------------
 const creators = [
+  {n:"Giorgia Amatori",h:"giorgiaamatori.finance",p:"instagram",s:"finance",sL:"Finance",f:16000,fL:"16k",reel:1,st:1,adv:1,aff:1},
+  {n:"Amer Nour",h:"instamerigo",p:"instagram",s:"ai",sL:"AI & Tech",f:180000,fL:"180k",reel:0,st:1,adv:0,aff:1},
+  {n:"Matteo Argieri",h:"matteo.argieri",p:"instagram",s:"marketing",sL:"Marketing",f:17000,fL:"17k",reel:1,st:1,adv:1,aff:1},
+  {n:"Ezio Bellini",h:"ilmalessere91",p:"instagram",s:"content",sL:"Content Creation",f:19000,fL:"19k",reel:1,st:1,adv:1,aff:1},
+  {n:"Bianca Malgioglio",h:"iambiancam",p:"instagram",s:"sport",sL:"Sport & Wellness",f:55000,fL:"55k",reel:1,st:1,adv:1,aff:1},
+  {n:"Eleonora Bracaglia",h:"eleonorabracaglia",p:"instagram",s:"crescita",sL:"Crescita & Formazione",f:34000,fL:"34k",reel:1,st:1,adv:1,aff:1},
+  {n:"Natalia Caputi",h:"natalia.caputi",p:"tiktok",s:"travel",sL:"Travel & Lifestyle",f:13000,fL:"13k",reel:1,st:1,adv:1,aff:1},
+  {n:"Dipi Tips",h:"dipitips",p:"instagram",s:"ai",sL:"AI & Tech",f:84000,fL:"84k",reel:1,st:1,adv:1,aff:1},
+  {n:"Eleonora Barbone",h:"eleonora.barbone",p:"instagram",s:"marketing",sL:"Marketing",f:7000,fL:"7k",reel:1,st:1,adv:1,aff:1},
+  {n:"Federica Ferraro",h:"federica_ferraro",p:"instagram",s:"travel",sL:"Travel & Lifestyle",f:130000,fL:"130k",reel:1,st:1,adv:1,aff:1},
+  {n:"Valerio Novelli",h:"valerionovelli",p:"instagram",s:"marketing",sL:"Marketing",f:8000,fL:"8k",reel:1,st:1,adv:1,aff:1},
+  {n:"Amanda Munini",h:"amandamunini",p:"instagram",s:"marketing",sL:"Marketing",f:25000,fL:"25k",reel:0,st:0,adv:0,aff:0},
+  {n:"Alessandra Nuzzo",h:"lavoroesocial",p:"instagram",s:"marketing",sL:"Marketing",f:223000,fL:"223k",reel:1,st:1,adv:1,aff:1},
+  {n:"Amedeo Poletti",h:"amedeopoletti_",p:"instagram",s:"ai",sL:"AI & Tech",f:26000,fL:"26k",reel:0,st:0,adv:0,aff:0},
+  {n:"Elena Schillaci",h:"elena_schillaci",p:"instagram",s:"marketing",sL:"Marketing",f:70000,fL:"70k",reel:0,st:0,adv:0,aff:0},
+  {n:"Francesca Sparaco",h:"sparkylab_",p:"instagram",s:"finance",sL:"Finance",f:10000,fL:"10k",reel:1,st:1,adv:1,aff:1},
+  {n:"Suzzane Henneh",h:"suzzanetravel",p:"instagram",s:"marketing",sL:"Marketing",f:32000,fL:"32k",reel:1,st:1,adv:1,aff:1},
+  {n:"Luca Tarabella",h:"studiotarabella_commercialista",p:"instagram",s:"finance",sL:"Finance",f:28000,fL:"28k",reel:1,st:1,adv:1,aff:1},
+  {n:"Marta Di Muro",h:"martadimuro_",p:"instagram",s:"travel",sL:"Travel & Lifestyle",f:269000,fL:"269k",reel:0,st:1,adv:0,aff:0},
+  {n:"Isabel Mule",h:"_travelcuriosity_",p:"instagram",s:"travel",sL:"Travel & Lifestyle",f:390000,fL:"390k",reel:0,st:1,adv:0,aff:0},
+  {n:"Matilde Silvestri",h:"travel.mati",p:"instagram",s:"travel",sL:"Travel & Lifestyle",f:311000,fL:"311k",reel:0,st:1,adv:0,aff:0},
+  {n:"Angelo Cardoni",h:"captaincardoni",p:"instagram",s:"travel",sL:"Travel & Lifestyle",f:65000,fL:"65k",reel:0,st:0,adv:0,aff:0},
+  {n:"Marinela Marku",h:"marinela_socialmedia",p:"instagram",s:"marketing",sL:"Marketing",f:93000,fL:"93k",reel:0,st:0,adv:0,aff:0},
+  {n:"Cristiano Niceta",h:"cristianoniceta.finance",p:"instagram",s:"finance",sL:"Finance",f:28000,fL:"28k",reel:0,st:0,adv:0,aff:0},
+  {n:"Irene Palumbo",h:"ireneepalumbo",p:"instagram",s:"crescita",sL:"Crescita & Formazione",f:17000,fL:"17k",reel:1,st:1,adv:1,aff:1},
+  {n:"Ludovica Tomasoni",h:"ludovicatomasoni",p:"instagram",s:"travel",sL:"Travel & Lifestyle",f:107000,fL:"107k",reel:0,st:1,adv:0,aff:0},
+  {n:"Borghi ingordi",h:"borghingordi",p:"instagram",s:"travel",sL:"Travel & Lifestyle",f:467000,fL:"467k",reel:0,st:1,adv:0,aff:0},
+  {n:"Aura Zanghellini",h:"auragain",p:"instagram",s:"travel",sL:"Travel & Lifestyle",f:77000,fL:"77k",reel:0,st:0,adv:0,aff:0},
+  {n:"Carlo Alberto Salerno",h:"social__chars",p:"instagram",s:"content",sL:"Content Creation",f:25000,fL:"25k",reel:0,st:0,adv:0,aff:0},
+  {n:"Dove andare in Veneto",h:"doveandareinveneto",p:"instagram",s:"content",sL:"Content Creation",f:85000,fL:"85k",reel:0,st:1,adv:0,aff:0},
+  {n:"Martina Massai",h:"martinamassai_",p:"instagram",s:"travel",sL:"Travel & Lifestyle",f:230000,fL:"230k",reel:0,st:1,adv:0,aff:0},
+  {n:"Marco Tiezzi",h:"",p:"instagram",s:"content",sL:"Content Creation",f:0,fL:"",reel:1,st:1,adv:0,aff:0},
   {n:"Alessia Boni",h:"aima_social",p:"instagram",s:"marketing",sL:"Marketing",f:10000,fL:"10k",reel:1,st:1,adv:1,aff:1},
   {n:"Alberto Morano",h:"albi_legal",p:"instagram",s:"finance",sL:"Finance",f:11000,fL:"11k",reel:1,st:1,adv:1,aff:1},
   {n:"Alessia Centorame",h:"alecento_",p:"instagram",s:"finance",sL:"Finance",f:45000,fL:"45k",reel:1,st:1,adv:1,aff:1},
   {n:"Alessandra Ros",h:"inspirational.project",p:"instagram",s:"sport",sL:"Sport & Wellness",f:4000,fL:"4k",reel:1,st:1,adv:1,aff:1},
   {n:"Alessia Lai",h:"alessiadventure",p:"instagram",s:"travel",sL:"Travel & Lifestyle",f:10000,fL:"10k",reel:1,st:1,adv:1,aff:1},
-  {n:"Giorgia Amatori",h:"giorgiaamatori.finance",p:"instagram",s:"finance",sL:"Finance",f:16000,fL:"16k",reel:1,st:1,adv:1,aff:1},
-  {n:"Amer Nour",h:"instamerigo",p:"instagram",s:"ai",sL:"AI & Tech",f:180000,fL:"180k",reel:0,st:1,adv:0,aff:1},
-  {n:"Ami (Pecuniami)",h:"pecuniami",p:"instagram",s:"finance",sL:"Finance",f:63000,fL:"63k",reel:1,st:1,adv:1,aff:1},
-  {n:"Sarah e Fede",h:"and_idigital",p:"instagram",s:"marketing",sL:"Marketing",f:14000,fL:"14k",reel:1,st:1,adv:1,aff:1},
+  {n:"Ami",h:"pecuniami",p:"instagram",s:"finance",sL:"Finance",f:63000,fL:"63k",reel:1,st:1,adv:1,aff:1},
+  {n:"Sarah e Fede (and_idigital)",h:"and_idigital",p:"instagram",s:"marketing",sL:"Marketing",f:14000,fL:"14k",reel:1,st:1,adv:1,aff:1},
   {n:"Andrea e Camilla",h:"andrea_e_camilla",p:"instagram",s:"travel",sL:"Travel & Lifestyle",f:55000,fL:"55k",reel:1,st:1,adv:1,aff:1},
-  {n:"Anjela Edirisinghe",h:"anjela.edirisinghe",p:"instagram",s:"marketing",sL:"Marketing",f:36000,fL:"36k",reel:1,st:1,adv:1,aff:1},
+  {n:"Anjela Edirisinghe",h:"anjela.edirisinghe",p:"instagram",s:"content",sL:"Content Creation",f:36000,fL:"36k",reel:1,st:1,adv:1,aff:1},
   {n:"Anna Pernice",h:"anna_pernice",p:"instagram",s:"travel",sL:"Travel & Lifestyle",f:127000,fL:"127k",reel:1,st:1,adv:1,aff:1},
   {n:"Antonino Gagliano",h:"antoninogagliano98",p:"instagram",s:"ai",sL:"AI & Tech",f:38000,fL:"38k",reel:1,st:1,adv:1,aff:1},
-  {n:"Matteo Argieri",h:"matteo.argieri",p:"instagram",s:"marketing",sL:"Marketing",f:17000,fL:"17k",reel:1,st:1,adv:1,aff:1},
   {n:"Arianna Ficcanterri",h:"arianna.ficcanterri",p:"instagram",s:"marketing",sL:"Marketing",f:25000,fL:"25k",reel:1,st:1,adv:1,aff:1},
   {n:"Aurora Crepaldij",h:"aurora.crepaldij",p:"instagram",s:"content",sL:"Content Creation",f:30000,fL:"30k",reel:1,st:1,adv:1,aff:1},
   {n:"Dennis Avarello",h:"dennisavarello.bsn",p:"instagram",s:"ai",sL:"AI & Tech",f:46000,fL:"46k",reel:1,st:1,adv:1,aff:1},
   {n:"Isabella Berardi",h:"isabella_thefashioncherrydiary",p:"instagram",s:"marketing",sL:"Marketing",f:35000,fL:"35k",reel:1,st:1,adv:1,aff:1},
-  {n:"Giulia Biamino",h:"giulia.biamino",p:"instagram",s:"marketing",sL:"Marketing",f:20000,fL:"20k",reel:1,st:1,adv:1,aff:1},
-  {n:"Bianca Malgioglio",h:"iambiancam",p:"instagram",s:"sport",sL:"Sport & Wellness",f:55000,fL:"55k",reel:1,st:1,adv:1,aff:1},
+  {n:"Giulia Biamino",h:"giulia.biamino",p:"instagram",s:"crescita",sL:"Crescita & Formazione",f:20000,fL:"20k",reel:1,st:1,adv:1,aff:1},
   {n:"Andrea Bonomo",h:"andreabonomo_mktg",p:"instagram",s:"marketing",sL:"Marketing",f:5000,fL:"5k",reel:1,st:1,adv:1,aff:1},
-  {n:"Eleonora Bracaglia",h:"eleonorabracaglia",p:"instagram",s:"crescita",sL:"Crescita & Formazione",f:34000,fL:"34k",reel:1,st:1,adv:1,aff:1},
   {n:"Alessio Bucci",h:"topdicanva",p:"instagram",s:"marketing",sL:"Marketing",f:80000,fL:"80k",reel:1,st:1,adv:1,aff:1},
-  {n:"Irene Buosi",h:"irenebuosi",p:"instagram",s:"marketing",sL:"Marketing",f:13000,fL:"13k",reel:1,st:1,adv:1,aff:1},
-  {n:"Carlotta Sgarra",h:"carlottasgarra.web",p:"instagram",s:"content",sL:"Content Creation",f:12000,fL:"12k",reel:1,st:1,adv:1,aff:1},
+  {n:"Irene Buosi",h:"irenebuosi",p:"instagram",s:"content",sL:"Content Creation",f:13000,fL:"13k",reel:1,st:1,adv:1,aff:1},
+  {n:"Alessia Butii",h:"alebutii",p:"instagram",s:"content",sL:"Content Creation",f:11000,fL:"11k",reel:1,st:1,adv:1,aff:1},
   {n:"Chantal",h:"chanti_unicamente",p:"instagram",s:"content",sL:"Content Creation",f:14000,fL:"14k",reel:1,st:1,adv:1,aff:1},
   {n:"Arianna Chieli",h:"ariannachieli",p:"instagram",s:"content",sL:"Content Creation",f:47000,fL:"47k",reel:1,st:1,adv:1,aff:1},
   {n:"Erica Cicuto",h:"erica_cicuto_psicologa",p:"instagram",s:"crescita",sL:"Crescita & Formazione",f:83000,fL:"83k",reel:1,st:1,adv:1,aff:1},
@@ -738,45 +720,37 @@ const creators = [
   {n:"Dennis Castelluzzo",h:"denniscastelluzzo",p:"instagram",s:"marketing",sL:"Marketing",f:110000,fL:"110k",reel:1,st:1,adv:1,aff:1},
   {n:"Detective Skills",h:"detective.skills",p:"instagram",s:"marketing",sL:"Marketing",f:133000,fL:"133k",reel:1,st:1,adv:1,aff:1},
   {n:"Daria Nania",h:"digidaria_",p:"instagram",s:"marketing",sL:"Marketing",f:9000,fL:"9k",reel:1,st:1,adv:1,aff:1},
-  {n:"Dipi Tips",h:"dipitips",p:"instagram",s:"ai",sL:"AI & Tech",f:84000,fL:"84k",reel:1,st:1,adv:1,aff:1},
-  {n:"Domenique Nicolo",h:"dominiquinho",p:"instagram",s:"travel",sL:"Travel & Lifestyle",f:16000,fL:"16k",reel:1,st:1,adv:1,aff:1},
+  {n:"Domenique Nicolò",h:"dominiquinho",p:"instagram",s:"travel",sL:"Travel & Lifestyle",f:16000,fL:"16k",reel:1,st:1,adv:1,aff:1},
   {n:"Eduardo Riccio",h:"infotricks_",p:"instagram",s:"content",sL:"Content Creation",f:235000,fL:"235k",reel:1,st:1,adv:1,aff:1},
-  {n:"Eleonora Barbone",h:"eleonora.barbone",p:"instagram",s:"marketing",sL:"Marketing",f:7000,fL:"7k",reel:1,st:1,adv:1,aff:1},
   {n:"Elisa Agresti",h:"elisa_aisocialstrategist",p:"instagram",s:"ai",sL:"AI & Tech",f:8000,fL:"8k",reel:1,st:1,adv:1,aff:1},
   {n:"Emil Ceron",h:"limedigital.it",p:"instagram",s:"marketing",sL:"Marketing",f:9000,fL:"9k",reel:1,st:1,adv:1,aff:1},
-  {n:"Emmanuel Aiello",h:"tishi.mov",p:"instagram",s:"marketing",sL:"Marketing",f:43000,fL:"43k",reel:1,st:1,adv:1,aff:1},
   {n:"Fabiana Cioffi",h:"destinazionefab",p:"instagram",s:"travel",sL:"Travel & Lifestyle",f:3000,fL:"3k",reel:1,st:1,adv:1,aff:1},
-  {n:"Fabio D'Alessandro",h:"fabio.dales",p:"instagram",s:"ai",sL:"AI & Tech",f:58000,fL:"58k",reel:1,st:1,adv:1,aff:1},
   {n:"Fabio Marchione",h:"fabiomarchione81",p:"instagram",s:"finance",sL:"Finance",f:17000,fL:"17k",reel:1,st:1,adv:1,aff:1},
   {n:"Fame di Viaggi",h:"famediviaggi",p:"instagram",s:"travel",sL:"Travel & Lifestyle",f:26000,fL:"26k",reel:1,st:1,adv:1,aff:1},
   {n:"Katia Smiraglia e Ale Perego",h:"famwithoutplan",p:"instagram",s:"content",sL:"Content Creation",f:32000,fL:"32k",reel:1,st:1,adv:1,aff:1},
-  {n:"Federica Ferraro",h:"federica_ferraro",p:"instagram",s:"travel",sL:"Travel & Lifestyle",f:130000,fL:"130k",reel:1,st:1,adv:1,aff:1},
   {n:"Federico Casadei",h:"fede_casad",p:"instagram",s:"marketing",sL:"Marketing",f:8000,fL:"8k",reel:1,st:1,adv:1,aff:1},
-  {n:"Luca Ferraina",h:"pianetaferra",p:"instagram",s:"ai",sL:"AI & Tech",f:102000,fL:"102k",reel:1,st:1,adv:1,aff:1},
+  {n:"Luca Ferraina",h:"pianetaferra",p:"instagram",s:"content",sL:"Content Creation",f:102000,fL:"102k",reel:1,st:1,adv:1,aff:1},
   {n:"Eleonora Ferrari",h:"ferrari_eleonora_",p:"instagram",s:"finance",sL:"Finance",f:13000,fL:"13k",reel:1,st:1,adv:1,aff:1},
   {n:"Simone Filippone",h:"simonesickwolf_official",p:"instagram",s:"crescita",sL:"Crescita & Formazione",f:107000,fL:"107k",reel:1,st:1,adv:1,aff:1},
-  {n:"Finn Kahlbenn",h:"finnkalbhenn",p:"instagram",s:"sport",sL:"Sport & Wellness",f:12000,fL:"12k",reel:1,st:1,adv:1,aff:1},
   {n:"Eleonora Fioravante",h:"travel.fiore",p:"instagram",s:"travel",sL:"Travel & Lifestyle",f:47000,fL:"47k",reel:1,st:1,adv:1,aff:1},
   {n:"Giulia Fiorini",h:"thelazysunflower_",p:"instagram",s:"travel",sL:"Travel & Lifestyle",f:25000,fL:"25k",reel:1,st:1,adv:1,aff:1},
-  {n:"Florencia Vieyra",h:"florvieyra",p:"instagram",s:"marketing",sL:"Marketing",f:49000,fL:"49k",reel:1,st:1,adv:1,aff:1},
+  {n:"Florencia Vieyra",h:"florvieyra",p:"instagram",s:"marketing",sL:"Marketing",f:62000,fL:"62k",reel:1,st:1,adv:1,aff:1},
   {n:"Nicolas Fontana",h:"iltuosmartworking",p:"instagram",s:"crescita",sL:"Crescita & Formazione",f:62000,fL:"62k",reel:1,st:1,adv:1,aff:1},
   {n:"Federica Rossi",h:"foodfede_",p:"instagram",s:"content",sL:"Content Creation",f:105000,fL:"105k",reel:1,st:1,adv:1,aff:1},
-  {n:"Frank (Chiedi a Frank)",h:"chiediafrank",p:"instagram",s:"crescita",sL:"Crescita & Formazione",f:81000,fL:"81k",reel:1,st:1,adv:1,aff:1},
+  {n:"Frank",h:"chiediafrank",p:"instagram",s:"crescita",sL:"Crescita & Formazione",f:81000,fL:"81k",reel:1,st:1,adv:1,aff:1},
   {n:"Frenky Morelli",h:"frenkymorelli",p:"instagram",s:"travel",sL:"Travel & Lifestyle",f:19000,fL:"19k",reel:1,st:1,adv:1,aff:1},
   {n:"Luca Ventura",h:"futuriscenari",p:"instagram",s:"crescita",sL:"Crescita & Formazione",f:16000,fL:"16k",reel:1,st:1,adv:1,aff:1},
   {n:"Gaia Banfi",h:"gaia.banfi",p:"instagram",s:"marketing",sL:"Marketing",f:19000,fL:"19k",reel:1,st:1,adv:1,aff:1},
   {n:"Sara Gasparini",h:"saragasparini_business",p:"instagram",s:"finance",sL:"Finance",f:271000,fL:"271k",reel:1,st:1,adv:1,aff:1},
-  {n:"Giada Guida",h:"giadatiguida",p:"tiktok",s:"marketing",sL:"Marketing",f:16000,fL:"16k",reel:1,st:1,adv:1,aff:1},
   {n:"Alessia Giammona",h:"alessias.travels",p:"instagram",s:"travel",sL:"Travel & Lifestyle",f:15000,fL:"15k",reel:1,st:1,adv:1,aff:1},
   {n:"Gianmarco Prompizii",h:"gianma.ai",p:"instagram",s:"ai",sL:"AI & Tech",f:17000,fL:"17k",reel:1,st:1,adv:1,aff:1},
   {n:"Gianni Caldarola",h:"gianni_caldarola",p:"instagram",s:"ai",sL:"AI & Tech",f:16000,fL:"16k",reel:1,st:1,adv:1,aff:1},
-  {n:"Giorgia Lavina",h:"giorgia.lavina",p:"instagram",s:"sport",sL:"Sport & Wellness",f:58000,fL:"58k",reel:1,st:1,adv:1,aff:1},
   {n:"Giorgia Bocchino",h:"giorgina_tuttavita",p:"instagram",s:"content",sL:"Content Creation",f:11000,fL:"11k",reel:1,st:1,adv:1,aff:1},
-  {n:"Giulia Elia",h:"giuliahelia",p:"instagram",s:"sport",sL:"Sport & Wellness",f:11000,fL:"11k",reel:1,st:1,adv:1,aff:1},
+  {n:"Giulia Elia",h:"giuliahelia",p:"instagram",s:"travel",sL:"Travel & Lifestyle",f:11000,fL:"11k",reel:1,st:1,adv:1,aff:1},
   {n:"Giulia Gullone",h:"giuliagullone",p:"instagram",s:"finance",sL:"Finance",f:13000,fL:"13k",reel:1,st:1,adv:1,aff:1},
   {n:"Eugenio Guzzo",h:"eugenio_guzzo",p:"instagram",s:"content",sL:"Content Creation",f:17000,fL:"17k",reel:1,st:1,adv:1,aff:1},
-  {n:"Federica Ignacchiti",h:"dov.emiracconto",p:"instagram",s:"marketing",sL:"Marketing",f:26000,fL:"26k",reel:1,st:1,adv:1,aff:1},
-  {n:"Il Duo del Digitale",h:"ilduodeldigitale_",p:"instagram",s:"marketing",sL:"Marketing",f:41000,fL:"41k",reel:1,st:1,adv:1,aff:1},
+  {n:"Federica Ignachitti",h:"dov.emiracconto",p:"instagram",s:"marketing",sL:"Marketing",f:26000,fL:"26k",reel:1,st:1,adv:1,aff:1},
+  {n:"Il duo del digitale",h:"ilduodeldigitale_",p:"instagram",s:"marketing",sL:"Marketing",f:41000,fL:"41k",reel:1,st:1,adv:1,aff:1},
   {n:"Isabella Silenzi",h:"isabellasilenzi",p:"instagram",s:"sport",sL:"Sport & Wellness",f:9000,fL:"9k",reel:1,st:1,adv:1,aff:1},
   {n:"Giacomo Treggiari",h:"dr.jacktraveller",p:"instagram",s:"crescita",sL:"Crescita & Formazione",f:99000,fL:"99k",reel:1,st:1,adv:1,aff:1},
   {n:"Joselena Zaccaro",h:"joselenazaccaro",p:"instagram",s:"marketing",sL:"Marketing",f:89000,fL:"89k",reel:1,st:1,adv:1,aff:1},
@@ -786,91 +760,63 @@ const creators = [
   {n:"Federica Le Rose",h:"lospecchiodichicca",p:"instagram",s:"travel",sL:"Travel & Lifestyle",f:180000,fL:"180k",reel:1,st:1,adv:1,aff:1},
   {n:"Letizia Nikehasani",h:"letismind",p:"instagram",s:"crescita",sL:"Crescita & Formazione",f:45000,fL:"45k",reel:1,st:1,adv:1,aff:1},
   {n:"Maleducati Finanziari",h:"maleducatifinanziari",p:"instagram",s:"finance",sL:"Finance",f:68000,fL:"68k",reel:1,st:1,adv:1,aff:1},
-  {n:"Manifest Digital",h:"manifest_digital_",p:"instagram",s:"ai",sL:"AI & Tech",f:22000,fL:"22k",reel:1,st:1,adv:1,aff:1},
-  {n:"Marika Carli",h:"marika.carli",p:"instagram",s:"travel",sL:"Travel & Lifestyle",f:12500,fL:"12k",reel:1,st:1,adv:1,aff:1},
+  {n:"Simona Mancuso",h:"lemarcheconsimo",p:"instagram",s:"content",sL:"Content Creation",f:35000,fL:"35k",reel:1,st:1,adv:1,aff:1},
+  {n:"Manifest_digital",h:"manifest_digital_",p:"instagram",s:"ai",sL:"AI & Tech",f:22000,fL:"22k",reel:1,st:1,adv:1,aff:1},
+  {n:"Marika Carli",h:"marika.carli",p:"instagram",s:"travel",sL:"Travel & Lifestyle",f:12500,fL:"12.5k",reel:1,st:1,adv:1,aff:1},
   {n:"Marika Altomare",h:"marikatraveltips",p:"instagram",s:"travel",sL:"Travel & Lifestyle",f:72000,fL:"72k",reel:1,st:1,adv:1,aff:1},
   {n:"Mario Giac",h:"mario.giac",p:"instagram",s:"marketing",sL:"Marketing",f:76000,fL:"76k",reel:1,st:1,adv:1,aff:1},
   {n:"Marta Franceschina",h:"marta_franceschina",p:"instagram",s:"finance",sL:"Finance",f:9000,fL:"9k",reel:1,st:1,adv:1,aff:1},
+  {n:"Martina Failla",h:"faillamartina_",p:"instagram",s:"content",sL:"Content Creation",f:126000,fL:"126k",reel:1,st:1,adv:1,aff:1},
   {n:"Matteo Mattiussi",h:"matteo_mattiussi",p:"instagram",s:"marketing",sL:"Marketing",f:22000,fL:"22k",reel:1,st:1,adv:1,aff:1},
   {n:"Mattia Catastini",h:"mattiacatastini",p:"instagram",s:"marketing",sL:"Marketing",f:11000,fL:"11k",reel:1,st:1,adv:1,aff:1},
   {n:"Melinda",h:"melinda_fromfree",p:"instagram",s:"ai",sL:"AI & Tech",f:115000,fL:"115k",reel:1,st:1,adv:1,aff:1},
   {n:"Federica Miceli",h:"fede_miceli",p:"instagram",s:"travel",sL:"Travel & Lifestyle",f:68000,fL:"68k",reel:1,st:1,adv:1,aff:1},
   {n:"Mirko Papadopoli",h:"mirkopapadopoli",p:"instagram",s:"ai",sL:"AI & Tech",f:21000,fL:"21k",reel:1,st:1,adv:1,aff:1},
-  {n:"Francesca Simbula",h:"mirtilla.malcontent",p:"instagram",s:"marketing",sL:"Marketing",f:13000,fL:"13k",reel:1,st:1,adv:1,aff:1},
-  {n:"Valerio Novelli",h:"valerionovelli",p:"instagram",s:"marketing",sL:"Marketing",f:8000,fL:"8k",reel:1,st:1,adv:1,aff:1},
   {n:"Giuseppe Motta",h:"beppe.motta",p:"instagram",s:"content",sL:"Content Creation",f:24000,fL:"24k",reel:1,st:1,adv:1,aff:1},
-  {n:"Nadia Orlando",h:"nadia__orlando",p:"instagram",s:"content",sL:"Content Creation",f:8000,fL:"8k",reel:1,st:1,adv:1,aff:0},
+  {n:"Nadia Orlando",h:"nadia__orlando",p:"instagram",s:"content",sL:"Content Creation",f:8000,fL:"8k",reel:1,st:1,adv:1,aff:1},
   {n:"Maria Grazia Neri",h:"mariagrazianeri",p:"instagram",s:"marketing",sL:"Marketing",f:8000,fL:"8k",reel:1,st:1,adv:1,aff:1},
-  {n:"Nicolas Lombardo",h:"nicolasllombardo",p:"instagram",s:"marketing",sL:"Marketing",f:103000,fL:"103k",reel:1,st:1,adv:1,aff:1},
   {n:"Noemi Saija",h:"noemihackz",p:"instagram",s:"ai",sL:"AI & Tech",f:101000,fL:"101k",reel:1,st:1,adv:1,aff:1},
   {n:"Francesca Bussinello",h:"nomadyae",p:"instagram",s:"travel",sL:"Travel & Lifestyle",f:17000,fL:"17k",reel:1,st:1,adv:1,aff:1},
-  {n:"Alessandra Nuzzo",h:"lavoroesocial",p:"instagram",s:"marketing",sL:"Marketing",f:223000,fL:"223k",reel:1,st:1,adv:1,aff:1},
   {n:"Pamela Ambrosini",h:"pam.ambrosini",p:"instagram",s:"crescita",sL:"Crescita & Formazione",f:14000,fL:"14k",reel:1,st:1,adv:1,aff:1},
+  {n:"Gaia Pelu",h:"gaiaapelu",p:"instagram",s:"content",sL:"Content Creation",f:11000,fL:"11k",reel:1,st:1,adv:1,aff:1},
   {n:"Clarissa Picchi",h:"clarissapicchi",p:"instagram",s:"marketing",sL:"Marketing",f:15000,fL:"15k",reel:1,st:1,adv:1,aff:1},
   {n:"Massimiliano Pioli",h:"massimiliano_pioli",p:"tiktok",s:"ai",sL:"AI & Tech",f:18000,fL:"18k",reel:1,st:1,adv:1,aff:1},
   {n:"Davide Giuliano",h:"davide.positioning",p:"instagram",s:"marketing",sL:"Marketing",f:7000,fL:"7k",reel:1,st:1,adv:1,aff:1},
   {n:"Oscar e Alessio",h:"professorideisocial",p:"instagram",s:"marketing",sL:"Marketing",f:108000,fL:"108k",reel:1,st:1,adv:1,aff:1},
-  {n:"Francesca Sparaco",h:"sparkylab_",p:"instagram",s:"finance",sL:"Finance",f:10000,fL:"10k",reel:1,st:1,adv:1,aff:1},
-  {n:"Suzzane Henneh",h:"suzzanetravel",p:"instagram",s:"marketing",sL:"Marketing",f:32000,fL:"32k",reel:1,st:1,adv:1,aff:1},
-  {n:"Luca Tarabella",h:"studiotarabella_commercialista",p:"instagram",s:"finance",sL:"Finance",f:28000,fL:"28k",reel:1,st:1,adv:1,aff:1},
-  {n:"Laura Fasano",h:"tecnolaura",p:"instagram",s:"ai",sL:"AI & Tech",f:49000,fL:"49k",reel:1,st:1,adv:1,aff:1},
-  {n:"Amedeo Poletti",h:"amedeopoletti_",p:"instagram",s:"ai",sL:"AI & Tech",f:26000,fL:"26k",reel:1,st:1,adv:1,aff:1},
-  {n:"Marta Di Muro",h:"martadimuro_",p:"instagram",s:"travel",sL:"Travel & Lifestyle",f:269000,fL:"269k",reel:1,st:1,adv:1,aff:1},
-  {n:"Martina Massai",h:"martinamassai_",p:"instagram",s:"travel",sL:"Travel & Lifestyle",f:230000,fL:"230k",reel:1,st:1,adv:1,aff:1},
-  {n:"Isabel Mule",h:"_travelcuriosity_",p:"instagram",s:"travel",sL:"Travel & Lifestyle",f:390000,fL:"390k",reel:1,st:1,adv:1,aff:1},
-  {n:"Martina Failla",h:"faillamartina_",p:"instagram",s:"content",sL:"Content Creation",f:126000,fL:"126k",reel:1,st:1,adv:1,aff:1},
-  {n:"Matilde Silvestri",h:"travel.mati",p:"instagram",s:"travel",sL:"Travel & Lifestyle",f:311000,fL:"311k",reel:1,st:1,adv:1,aff:1},
-  {n:"Amanda Munini",h:"amandamunini",p:"instagram",s:"marketing",sL:"Marketing",f:25000,fL:"25k",reel:1,st:1,adv:1,aff:1},
-  {n:"Elena Schillaci",h:"elena_schillaci",p:"instagram",s:"marketing",sL:"Marketing",f:70000,fL:"70k",reel:1,st:1,adv:1,aff:1},
-  {n:"Simona Mancuso",h:"lemarcheconsimo",p:"instagram",s:"content",sL:"Content Creation",f:35000,fL:"35k",reel:1,st:1,adv:1,aff:1},
-  {n:"Alessia Butii",h:"alebutii",p:"instagram",s:"content",sL:"Content Creation",f:11000,fL:"11k",reel:1,st:1,adv:1,aff:1},
-  {n:"Ezio Bellini",h:"ilmalessere91",p:"instagram",s:"marketing",sL:"Marketing",f:19000,fL:"19k",reel:1,st:1,adv:1,aff:1},
-  {n:"Andrea Sanfilippo",h:"andreasanfilippo.as",p:"instagram",s:"content",sL:"Content Creation",f:31000,fL:"31k",reel:1,st:1,adv:1,aff:1},
-  {n:"Natalia Caputi",h:"natalia.caputi",p:"instagram",s:"travel",sL:"Travel & Lifestyle",f:13000,fL:"13k",reel:1,st:1,adv:1,aff:1},
-  {n:"Angelo Cardoni",h:"captaincardoni",p:"instagram",s:"travel",sL:"Travel & Lifestyle",f:65000,fL:"65k",reel:1,st:1,adv:1,aff:1},
-  {n:"Marinela Marku",h:"marinela_socialmedia",p:"instagram",s:"marketing",sL:"Marketing",f:93000,fL:"93k",reel:1,st:1,adv:1,aff:1},
-  {n:"Valentina Valenti",h:"valentinagvalenti_",p:"instagram",s:"marketing",sL:"Marketing",f:10000,fL:"10k",reel:1,st:1,adv:1,aff:1},
-  {n:"Cristiano Niceta",h:"cristianoniceta.finance",p:"instagram",s:"finance",sL:"Finance",f:28000,fL:"28k",reel:1,st:1,adv:1,aff:1},
-  {n:"Laura Formenti",h:"laura.formenti",p:"instagram",s:"content",sL:"Content Creation",f:153000,fL:"153k",reel:1,st:1,adv:1,aff:1},
-  {n:"Antonio Giannone",h:"camminanto_",p:"instagram",s:"travel",sL:"Travel & Lifestyle",f:45000,fL:"45k",reel:1,st:1,adv:1,aff:1},
-  {n:"Marco Tiezzi",h:"",p:"instagram",s:"content",sL:"Content Creation",f:0,fL:"",reel:1,st:1,adv:1,aff:1},
-  {n:"Chiara Bergagnini",h:"chiabeatslife",p:"instagram",s:"sport",sL:"Sport & Wellness",f:26000,fL:"26k",reel:1,st:1,adv:1,aff:1},
-  {n:"Carolina Chiari",h:"carolchiari",p:"instagram",s:"travel",sL:"Travel & Lifestyle",f:63000,fL:"63k",reel:1,st:1,adv:1,aff:1},
-  {n:"Marina Jugovac",h:"casadi_ventimetriquadri",p:"instagram",s:"content",sL:"Content Creation",f:29000,fL:"29k",reel:1,st:1,adv:1,aff:1},
-  {n:"Irene Palumbo",h:"ireneepalumbo",p:"instagram",s:"crescita",sL:"Crescita & Formazione",f:17000,fL:"17k",reel:1,st:1,adv:1,aff:1},
-  {n:"Ludovica Tomasoni",h:"ludovicatomasoni",p:"instagram",s:"travel",sL:"Travel & Lifestyle",f:107000,fL:"107k",reel:1,st:1,adv:1,aff:1},
-  {n:"Borghi ingordi",h:"borghingordi",p:"instagram",s:"travel",sL:"Travel & Lifestyle",f:467000,fL:"467k",reel:1,st:1,adv:1,aff:1},
-  {n:"Sofia Littame",h:"sofia_littame",p:"instagram",s:"sport",sL:"Sport & Wellness",f:15000,fL:"15k",reel:1,st:1,adv:1,aff:1},
-  {n:"Gaia Pelu",h:"gaiaapelu",p:"instagram",s:"content",sL:"Content Creation",f:11000,fL:"11k",reel:1,st:1,adv:1,aff:1},
-  {n:"Riccardo Santoro",h:"rickysantoroofficial",p:"instagram",s:"content",sL:"Content Creation",f:34000,fL:"34k",reel:1,st:1,adv:1,aff:1},
-  {n:"Laura Crepaldi",h:"donnecheviaggianocoilupi",p:"instagram",s:"travel",sL:"Travel & Lifestyle",f:56000,fL:"56k",reel:1,st:1,adv:1,aff:1},
-  {n:"Layla",h:"trek_n_trip",p:"instagram",s:"travel",sL:"Travel & Lifestyle",f:33000,fL:"33k",reel:1,st:1,adv:1,aff:1},
   {n:"Rachele Rossi",h:"rachele_rrossi",p:"instagram",s:"marketing",sL:"Marketing",f:89000,fL:"89k",reel:1,st:1,adv:1,aff:1},
   {n:"Fabrizio Ribelli",h:"socialribelli",p:"instagram",s:"marketing",sL:"Marketing",f:47000,fL:"47k",reel:1,st:1,adv:1,aff:1},
-  {n:"Roberto Buonanno",h:"robertobuonanno75",p:"instagram",s:"finance",sL:"Finance",f:17000,fL:"17k",reel:1,st:1,adv:1,aff:1},
-  {n:"Valentina Scarafini",h:"rotolandoperilmondo",p:"instagram",s:"travel",sL:"Travel & Lifestyle",f:124000,fL:"124k",reel:1,st:1,adv:1,aff:1},
+  {n:"Valentina SCARAFINI",h:"rotolandoperilmondo",p:"instagram",s:"travel",sL:"Travel & Lifestyle",f:124000,fL:"124k",reel:1,st:1,adv:1,aff:1},
+  {n:"Andrea Sanfilippo",h:"andreasanfilippo.as",p:"instagram",s:"content",sL:"Content Creation",f:31000,fL:"31k",reel:1,st:1,adv:1,aff:1},
   {n:"Sarah Pandolfini",h:"sarahinprimopiano",p:"instagram",s:"content",sL:"Content Creation",f:97000,fL:"97k",reel:1,st:1,adv:1,aff:1},
   {n:"Sara Boccolini",h:"viaggio_animamente",p:"instagram",s:"travel",sL:"Travel & Lifestyle",f:16000,fL:"16k",reel:1,st:1,adv:1,aff:1},
   {n:"Sevennesi",h:"sevennesi",p:"instagram",s:"marketing",sL:"Marketing",f:7000,fL:"7k",reel:1,st:1,adv:1,aff:1},
   {n:"Simina Condescu",h:"siminacondescu",p:"instagram",s:"marketing",sL:"Marketing",f:41000,fL:"41k",reel:1,st:1,adv:1,aff:1},
+  {n:"Sofia Littamè",h:"sofia_littame",p:"instagram",s:"sport",sL:"Sport & Wellness",f:15000,fL:"15k",reel:1,st:1,adv:1,aff:1},
   {n:"Ilaria Tarallo",h:"ila.yoga",p:"instagram",s:"sport",sL:"Sport & Wellness",f:18000,fL:"18k",reel:1,st:1,adv:1,aff:1},
   {n:"Mattia Cavenaghi",h:"_tiacave",p:"instagram",s:"crescita",sL:"Crescita & Formazione",f:298000,fL:"298k",reel:1,st:1,adv:1,aff:1},
-  {n:"Two Queens",h:"twoqueensfamily",p:"instagram",s:"travel",sL:"Travel & Lifestyle",f:171000,fL:"171k",reel:1,st:1,adv:1,aff:1},
+  {n:"Two queens",h:"twoqueensfamily",p:"instagram",s:"travel",sL:"Travel & Lifestyle",f:171000,fL:"171k",reel:1,st:1,adv:1,aff:1},
   {n:"Umberto De Zotti",h:"umbedezotti",p:"instagram",s:"marketing",sL:"Marketing",f:11000,fL:"11k",reel:1,st:1,adv:1,aff:1},
   {n:"Vittoria Ficcanterri",h:"vittoriaficcanterri",p:"instagram",s:"travel",sL:"Travel & Lifestyle",f:10000,fL:"10k",reel:1,st:1,adv:1,aff:1},
-  {n:"Filippo Ignacchitti",h:"pippetto__",p:"instagram",s:"content",sL:"Content Creation",f:105000,fL:"105k",reel:1,st:1,adv:1,aff:1},
-  {n:"Lorenzo Biagetti",h:"lorenzobiagetti",p:"instagram",s:"sport",sL:"Sport & Wellness",f:34000,fL:"34k",reel:1,st:1,adv:1,aff:1},
+  {n:"Valentina Valenti",h:"valentinagvalenti_",p:"instagram",s:"marketing",sL:"Marketing",f:10000,fL:"10k",reel:1,st:1,adv:1,aff:1},
+  {n:"Antonio Giannone",h:"camminanto_",p:"instagram",s:"content",sL:"Content Creation",f:45000,fL:"45k",reel:1,st:1,adv:1,aff:1},
+  {n:"Carolina Chiari",h:"carolchiari",p:"instagram",s:"travel",sL:"Travel & Lifestyle",f:63000,fL:"63k",reel:1,st:1,adv:1,aff:1},
+  {n:"Marina Jugovac",h:"casadi_ventimetriquadri",p:"instagram",s:"content",sL:"Content Creation",f:29000,fL:"29k",reel:1,st:1,adv:1,aff:1},
+  {n:"Laura Crepaldi",h:"donnecheviaggianocoilupi",p:"instagram",s:"content",sL:"Content Creation",f:56000,fL:"56k",reel:1,st:1,adv:1,aff:1},
+  {n:"Heyjeko",h:"heyjeko",p:"instagram",s:"ai",sL:"AI & Tech",f:13000,fL:"13k",reel:1,st:1,adv:1,aff:1},
+  {n:"Martina Dutto",h:"martinadutto",p:"instagram",s:"travel",sL:"Travel & Lifestyle",f:52000,fL:"52k",reel:1,st:1,adv:1,aff:1},
+  {n:"Laura Formenti",h:"laura.formenti",p:"instagram",s:"content",sL:"Content Creation",f:153000,fL:"153k",reel:0,st:1,adv:0,aff:0},
+  {n:"Riccardo Santoro",h:"rickysantoroofficial",p:"instagram",s:"content",sL:"Content Creation",f:34000,fL:"34k",reel:1,st:1,adv:1,aff:1},
+  {n:"Layla",h:"trek_n_trip",p:"instagram",s:"travel",sL:"Travel & Lifestyle",f:33000,fL:"33k",reel:1,st:1,adv:1,aff:1},
+  {n:"filippo Ignacchitti",h:"pippetto__",p:"instagram",s:"content",sL:"Content Creation",f:105000,fL:"105k",reel:1,st:1,adv:1,aff:1},
+  {n:"Lorenzo Biagetti",h:"lorenzobiagetti",p:"instagram",s:"sport",sL:"Sport & Wellness",f:34000,fL:"34k",reel:0,st:1,adv:0,aff:0},
   {n:"Gianmarco Capri",h:"gianmarcocapri",p:"instagram",s:"content",sL:"Content Creation",f:73000,fL:"73k",reel:1,st:1,adv:1,aff:1},
   {n:"Alessandra Flagiello",h:"alessandrainspagna",p:"instagram",s:"content",sL:"Content Creation",f:14000,fL:"14k",reel:1,st:1,adv:1,aff:1},
   {n:"Martina Bugliarelli",h:"martinabugliarelli",p:"instagram",s:"travel",sL:"Travel & Lifestyle",f:42000,fL:"42k",reel:1,st:1,adv:1,aff:1},
   {n:"Beatrice Arnaboldi",h:"che.ansia.sia.con.te",p:"instagram",s:"content",sL:"Content Creation",f:207000,fL:"207k",reel:1,st:1,adv:1,aff:1},
-  {n:"Silvia Marchetti",h:"silviamarchetti_pedagogista",p:"instagram",s:"crescita",sL:"Crescita & Formazione",f:131000,fL:"131k",reel:1,st:1,adv:1,aff:1},
+  {n:"Silvia Marchetti",h:"silviamarchetti_pedagogista",p:"instagram",s:"finance",sL:"Finance",f:131000,fL:"131k",reel:1,st:1,adv:1,aff:1},
   {n:"Veronica Vernone",h:"vera_verace",p:"instagram",s:"marketing",sL:"Marketing",f:66000,fL:"66k",reel:1,st:1,adv:1,aff:1},
-  {n:"Linda Monaco",h:"",p:"instagram",s:"marketing",sL:"Marketing",f:0,fL:"",reel:1,st:1,adv:1,aff:1},
-  {n:"Heyjeko",h:"heyjeko",p:"instagram",s:"ai",sL:"AI & Tech",f:13000,fL:"13k",reel:1,st:1,adv:1,aff:1},
-  {n:"Martina Dutto",h:"martinadutto",p:"instagram",s:"travel",sL:"Travel & Lifestyle",f:52000,fL:"52k",reel:1,st:1,adv:1,aff:1},
+  {n:"Linda Monaco",h:"",p:"instagram",s:"content",sL:"Content Creation",f:0,fL:"",reel:1,st:1,adv:1,aff:1},
   {n:"Aurora Giancola",h:"theauroragiancola",p:"instagram",s:"crescita",sL:"Crescita & Formazione",f:72000,fL:"72k",reel:1,st:1,adv:1,aff:1},
-  {n:"Michela Forte",h:"michela_f._greta",p:"instagram",s:"travel",sL:"Travel & Lifestyle",f:16000,fL:"16k",reel:1,st:1,adv:1,aff:1},
   {n:"Lumonboy",h:"lumonboy",p:"instagram",s:"content",sL:"Content Creation",f:44000,fL:"44k",reel:1,st:1,adv:1,aff:1},
   {n:"Matilde Bonugli",h:"matildebonugli",p:"instagram",s:"content",sL:"Content Creation",f:271000,fL:"271k",reel:1,st:1,adv:1,aff:1},
   {n:"Luca Iardella",h:"lucaiardella_",p:"instagram",s:"content",sL:"Content Creation",f:57000,fL:"57k",reel:1,st:1,adv:1,aff:1},
@@ -884,89 +830,27 @@ const creators = [
   {n:"Sara Masala",h:"saramasala_digital",p:"instagram",s:"marketing",sL:"Marketing",f:21000,fL:"21k",reel:1,st:1,adv:1,aff:1},
   {n:"Alessandro Mancuso",h:"outofpathh",p:"instagram",s:"content",sL:"Content Creation",f:22000,fL:"22k",reel:1,st:1,adv:1,aff:1},
   {n:"Teresa Marin",h:"teresamrn.png",p:"instagram",s:"marketing",sL:"Marketing",f:20000,fL:"20k",reel:1,st:1,adv:1,aff:1},
-  {n:"Pellegrino D'Addio",h:"",p:"instagram",s:"marketing",sL:"Marketing",f:65000,fL:"65k",reel:1,st:1,adv:1,aff:1},
+  {n:"Pellegrino D'Addio",h:"fatti.per.pensare",p:"instagram",s:"content",sL:"Content Creation",f:65000,fL:"65k",reel:1,st:1,adv:1,aff:1},
   {n:"Stefano Traverso",h:"stefanotraverso",p:"instagram",s:"finance",sL:"Finance",f:57000,fL:"57k",reel:1,st:1,adv:1,aff:1},
-  {n:"Nico",h:"nico_ilcamminodelcretino",p:"instagram",s:"crescita",sL:"Crescita & Formazione",f:124000,fL:"124k",reel:1,st:1,adv:1,aff:1},
-  {n:"Daniele Baxa",h:"daniele_baxa",p:"instagram",s:"sport",sL:"Sport & Wellness",f:0,fL:"",reel:1,st:1,adv:1,aff:1},
-  {n:"Mattia Siboni",h:"mattiasiboni",p:"instagram",s:"travel",sL:"Travel & Lifestyle",f:33000,fL:"33k",reel:1,st:1,adv:1,aff:1},
-  // Influencer, Speaker, Ospiti confermati (seconda tabella)
-  {n:"Cathy La Torre",h:"avvocathy",p:"instagram",s:"finance",sL:"Finance",f:1200000,fL:"1.2M",t:"i"},
-  {n:"Giulia Calcaterra",h:"giuliacalcaterra",p:"instagram",s:"sport",sL:"Sport & Wellness",f:1000000,fL:"1M",t:"i"},
-  {n:"Giulia Lamarca",h:"giulialamarca",p:"instagram",s:"content",sL:"Content Creation",f:795000,fL:"795k",t:"o"},
-  {n:"Eleonora Viscardi",h:"eleonora.viscardii",p:"instagram",s:"travel",sL:"Travel & Lifestyle",f:724000,fL:"724k",t:"i"},
-  {n:"Jacopo D'Alesio",h:"jakidale",p:"instagram",s:"content",sL:"Content Creation",f:598000,fL:"598k",t:"o"},
-  {n:"Gianluca Gazzoli",h:"gianlucagazzoli",p:"instagram",s:"content",sL:"Content Creation",f:539000,fL:"539k",t:"s"},
-  {n:"Accorciabro",h:"accorciabro",p:"instagram",s:"content",sL:"Content Creation",f:538000,fL:"538k",t:"i"},
-  {n:"Virginia Gambardella",h:"virginia.gambardella",p:"instagram",s:"content",sL:"Content Creation",f:521000,fL:"521k",t:"s"},
-  {n:"Giacomo Spazzini",h:"giacomospazzini",p:"instagram",s:"marketing",sL:"Marketing",f:352000,fL:"352k",t:"i"},
-  {n:"Angelica Siciliani Fendi",h:"angie.tutorials",p:"instagram",s:"ai",sL:"AI & Tech",f:342000,fL:"342k",t:"i"},
-  {n:"Massimiliano Allievi",h:"studioallievi_commercialisti",p:"instagram",s:"finance",sL:"Finance",f:334000,fL:"334k",t:"o"},
-  {n:"Nick Pescetto",h:"nickpescetto",p:"instagram",s:"finance",sL:"Finance",f:327000,fL:"327k",t:"o"},
-  {n:"Marco Cartasegna",h:"marcocartasegna",p:"instagram",s:"marketing",sL:"Marketing",f:315000,fL:"315k",t:"i"},
-  {n:"Leonardo Bocci",h:"leonardobocci_",p:"instagram",s:"content",sL:"Content Creation",f:310000,fL:"310k",t:"i"},
-  {n:"Alberto Ravagnani",h:"albertorava",p:"instagram",s:"content",sL:"Content Creation",f:307000,fL:"307k",t:"i"},
-  {n:"Francesco Oggiano",h:"fraoggiano",p:"instagram",s:"ai",sL:"AI & Tech",f:270000,fL:"270k",t:"o"},
-  {n:"Benedetta Santini",h:"filosofiaecaffeina",p:"instagram",s:"crescita",sL:"Crescita & Formazione",f:249000,fL:"249k",t:"o"},
-  {n:"Emanuele Malloru",h:"emalloru",p:"instagram",s:"content",sL:"Content Creation",f:239000,fL:"239k",t:"o"},
-  {n:"Marcello Chiapponi",h:"marcello_chiapponi_physio_fit",p:"instagram",s:"sport",sL:"Sport & Wellness",f:237000,fL:"237k",t:"o"},
-  {n:"Marcello Ascani",h:"marcelloascani",p:"instagram",s:"content",sL:"Content Creation",f:231000,fL:"231k",t:"i"},
-  {n:"Andrea Lombardi",h:"andrlmbrd",p:"instagram",s:"marketing",sL:"Marketing",f:230000,fL:"230k",t:"i"},
-  {n:"Paola Maugeri",h:"paolamaugeri",p:"instagram",s:"content",sL:"Content Creation",f:230000,fL:"230k",t:"o"},
-  {n:"Francesca Ruvolo",h:"wildflowermood",p:"instagram",s:"travel",sL:"Travel & Lifestyle",f:229000,fL:"229k",t:"s"},
-  {n:"Ellis De Bona",h:"ellisdebona",p:"instagram",s:"content",sL:"Content Creation",f:210000,fL:"210k",t:"i"},
-  {n:"Luca Mazzucchelli",h:"luca.mazzucchelli",p:"instagram",s:"crescita",sL:"Crescita & Formazione",f:210000,fL:"210k",t:"i"},
-  {n:"Linda Morselli",h:"lalindaa",p:"instagram",s:"sport",sL:"Sport & Wellness",f:215000,fL:"215k",t:"o"},
-  {n:"Chiara Prencipe ASMR",h:"chiara.asmr",p:"instagram",s:"content",sL:"Content Creation",f:202000,fL:"202k",t:"o"},
-  {n:"Matteo Fiocco",h:"matt_thefarmer",p:"instagram",s:"travel",sL:"Travel & Lifestyle",f:155000,fL:"155k",t:"o"},
-  {n:"Jo Dunica",h:"jo.dunica",p:"instagram",s:"content",sL:"Content Creation",f:141000,fL:"141k",t:"o"},
-  {n:"Marco Cappelli",h:"marco._cappelli",p:"instagram",s:"marketing",sL:"Marketing",f:130000,fL:"130k",t:"o"},
-  {n:"Make you greener",h:"makeyougreener",p:"instagram",s:"content",sL:"Content Creation",f:127000,fL:"127k",t:"o"},
-  {n:"Martina Maccherone",h:"martinamaccherone",p:"instagram",s:"content",sL:"Content Creation",f:123000,fL:"123k",t:"s"},
-  {n:"Richard Romagnoli",h:"richardromagnoli",p:"instagram",s:"marketing",sL:"Marketing",f:122000,fL:"122k",t:"i"},
-  {n:"Camilla Brossa",h:"camillabrossa",p:"instagram",s:"marketing",sL:"Marketing",f:119000,fL:"119k",t:"s"},
-  {n:"Valentina Peracchi",h:"valentina_peracchi",p:"instagram",s:"sport",sL:"Sport & Wellness",f:103000,fL:"103k",t:"i"},
-  {n:"Giuseppe D'Angelo Bertuccio",h:"giuseppe.bedan",p:"instagram",s:"marketing",sL:"Marketing",f:89000,fL:"89k",t:"s"},
-  {n:"Martina Domenicali",h:"martinadomenicali",p:"instagram",s:"sport",sL:"Sport & Wellness",f:77000,fL:"77k",t:"i"},
-  {n:"Graziosa Pancot",h:"grace_theamazing",p:"instagram",s:"content",sL:"Content Creation",f:64000,fL:"64k",t:"o"},
-  {n:"Antonio Giorgino",h:"giovanetony",p:"instagram",s:"marketing",sL:"Marketing",f:58000,fL:"58k",t:"i"},
-  {n:"Cristina Buonerba",h:"thelazytrotter",p:"instagram",s:"travel",sL:"Travel & Lifestyle",f:52000,fL:"52k",t:"o"},
-  {n:"Carol Enrico",h:"carol_enrico",p:"instagram",s:"sport",sL:"Sport & Wellness",f:51000,fL:"51k",t:"o"},
-  {n:"Luca La Mesa",h:"lucalamesa",p:"instagram",s:"marketing",sL:"Marketing",f:49000,fL:"49k",t:"o"},
-  {n:"Arlinda Laska",h:"donnaincarriera",p:"instagram",s:"crescita",sL:"Crescita & Formazione",f:48000,fL:"48k",t:"o"},
-  {n:"Rirri",h:"rirririrri",p:"instagram",s:"content",sL:"Content Creation",f:47000,fL:"47k",t:"o"},
-  {n:"Marianne Mirage",h:"mariannemirage",p:"instagram",s:"content",sL:"Content Creation",f:44000,fL:"44k",t:"o"},
-  {n:"Mattia Marangon",h:"maranga9000",p:"instagram",s:"marketing",sL:"Marketing",f:37000,fL:"37k",t:"i"},
-  {n:"Mick Odelli",h:"mickodelli",p:"instagram",s:"content",sL:"Content Creation",f:41000,fL:"41k",t:"i"},
-  {n:"Lucrezia Montrone",h:"lucrezia_montrone",p:"instagram",s:"content",sL:"Content Creation",f:27000,fL:"27k",t:"o"},
-  {n:"Emanuele Usai",h:"elousai",p:"instagram",s:"marketing",sL:"Marketing",f:25000,fL:"25k",t:"o"},
-  {n:"Federica Mutti",h:"federica_mutti",p:"instagram",s:"marketing",sL:"Marketing",f:23000,fL:"23k",t:"o"},
-  {n:"Marco Migliavacca",h:"allneon",p:"instagram",s:"content",sL:"Content Creation",f:19000,fL:"19k",t:"o"},
-  {n:"Alessandro Vercellotti",h:"avvocatodeldigitale",p:"instagram",s:"marketing",sL:"Marketing",f:20000,fL:"20k",t:"o"},
-  {n:"Giada Zhang",h:"giadazhang",p:"instagram",s:"marketing",sL:"Marketing",f:16000,fL:"16k",t:"o"},
-  {n:"Francesco Tassi",h:"franceotassi",p:"instagram",s:"content",sL:"Content Creation",f:12000,fL:"12k",t:"o"},
-  {n:"Paolo De Nadai",h:"paolo_de_nadai",p:"instagram",s:"marketing",sL:"Marketing",f:13000,fL:"13k",t:"o"},
-  {n:"Iacopo Pelagatti",h:"iacopopop",p:"instagram",s:"marketing",sL:"Marketing",f:8000,fL:"8k",t:"o"},
-  {n:"Giovanni Ciferri",h:"giociferri",p:"instagram",s:"marketing",sL:"Marketing",f:7000,fL:"7k",t:"o"},
-  {n:"Vittorio Martinelli",h:"vittoriomartinelli___",p:"instagram",s:"marketing",sL:"Marketing",f:2000,fL:"2k",t:"o"},
-  {n:"Fabio Bin",h:"fabiobin",p:"instagram",s:"travel",sL:"Travel & Lifestyle",f:1000,fL:"1k",t:"o"},
-  {n:"Davide Sada",h:"davidefsada",p:"instagram",s:"marketing",sL:"Marketing",f:0,fL:"",t:"i"},
-  {n:"Andrea Muzi",h:"andreamuzii.wmc",p:"instagram",s:"marketing",sL:"Marketing",f:0,fL:"",t:"i"},
-  {n:"Gianluigi Ballarani",h:"gianluigiballarani",p:"instagram",s:"marketing",sL:"Marketing",f:0,fL:"",t:"i"},
-  {n:"Mariangela Pira",h:"mariangelapira",p:"instagram",s:"marketing",sL:"Marketing",f:0,fL:"",t:"i"},
-  {n:"Francesca Ammaturo",h:"francescaammaturo_",p:"instagram",s:"content",sL:"Content Creation",f:0,fL:"",t:"o"},
-  {n:"Thomas Asueni",h:"thomasasueni",p:"instagram",s:"content",sL:"Content Creation",f:0,fL:"",t:"o"},
-  {n:"Riccardo Il Dena",h:"il_dena_",p:"instagram",s:"content",sL:"Content Creation",f:0,fL:"",t:"o"},
-  {n:"Meri Matemagica",h:"meribi_matemaggica",p:"instagram",s:"crescita",sL:"Crescita & Formazione",f:0,fL:"",t:"o"},
-  {n:"Giulia Fiorenza",h:"",p:"instagram",s:"content",sL:"Content Creation",f:0,fL:"",t:"o"},
-  {n:"Nikola Greku",h:"",p:"instagram",s:"marketing",sL:"Marketing",f:0,fL:"",t:"i"},
-  {n:"Antonio Guadagno",h:"",p:"instagram",s:"content",sL:"Content Creation",f:0,fL:"",t:"o"},
+  {n:"Elisa Giusti",h:"elisa.educatrice",p:"instagram",s:"crescita",sL:"Crescita & Formazione",f:152000,fL:"152k",reel:1,st:1,adv:1,aff:1},
+  {n:"Sempliciare",h:"sempliciare",p:"instagram",s:"travel",sL:"Travel & Lifestyle",f:22000,fL:"22k",reel:1,st:1,adv:1,aff:1},
+  {n:"Giuliana Piazzese",h:"inciampando",p:"instagram",s:"travel",sL:"Travel & Lifestyle",f:17000,fL:"17k",reel:1,st:1,adv:1,aff:1},
+  {n:"Cambio Strada",h:"cambiostrada_",p:"instagram",s:"travel",sL:"Travel & Lifestyle",f:14000,fL:"14k",reel:1,st:1,adv:1,aff:1},
+  {n:"Elisabetta Virgilio",h:"eli_divirgilio_fit",p:"instagram",s:"sport",sL:"Sport & Wellness",f:133000,fL:"133k",reel:1,st:1,adv:1,aff:1},
+  {n:"Francesca Simbula",h:"mirtilla.malcontent",p:"instagram",s:"marketing",sL:"Marketing",f:13000,fL:"13k",reel:1,st:1,adv:1,aff:1},
+  {n:"Fabio D'Alessandro",h:"fabio.dales",p:"instagram",s:"ai",sL:"AI & Tech",f:58000,fL:"58k",reel:1,st:1,adv:1,aff:1},
+  {n:"Carlotta Sgarra",h:"carlottasgarra.web",p:"instagram",s:"content",sL:"Content Creation",f:12000,fL:"12k",reel:1,st:1,adv:1,aff:1},
+  {n:"Finn Kahlbenn",h:"finnkalbhenn",p:"instagram",s:"content",sL:"Content Creation",f:12000,fL:"12k",reel:1,st:1,adv:1,aff:1},
+  {n:"Giada Guida",h:"giadatiguida",p:"tiktok",s:"marketing",sL:"Marketing",f:16000,fL:"16k",reel:1,st:1,adv:1,aff:1},
+  {n:"Giorgia Lavina",h:"giorgia.lavina",p:"instagram",s:"content",sL:"Content Creation",f:58000,fL:"58k",reel:1,st:1,adv:1,aff:1},
+  {n:"Nicolas Lombardo",h:"nicolasllombardo",p:"instagram",s:"marketing",sL:"Marketing",f:103000,fL:"103k",reel:1,st:1,adv:1,aff:1},
+  {n:"Chiara Bergagnini",h:"chiabeatslife",p:"instagram",s:"sport",sL:"Sport & Wellness",f:26000,fL:"26k",reel:1,st:1,adv:1,aff:1},
 ];
 
 creators.sort((a, b) => b.f - a.f);
 
 const INIT = 24;
 let currentSector = 'all';
-let currentTipo   = 'creator'; // 'creator' | 'influencer'
 let currentFl     = 'all';     // 'all' | 'micro' | 'mid' | 'macro'
 let showAll = false;
 
@@ -998,8 +882,8 @@ function nameHash(name) {
 
 function avatarSvg(c) {
   const pal  = AVATAR_PALETTES[nameHash(c.n) % AVATAR_PALETTES.length];
-  const fg   = !c.t ? '#78E591' : c.t === 'i' ? '#69B4EA' : c.t === 's' ? '#F4C842' : 'rgba(255,255,255,0.55)';
-  const bg1  = !c.t ? '#0f2d14' : c.t === 'i' ? '#0f1e2d' : c.t === 's' ? '#2d2408' : '#181828';
+  const fg   = pal.fg;
+  const bg1  = pal.bg1;
   const inits = initials(c.n);
   // ID unico per il gradient (evita collision SVG)
   const uid = 'g' + nameHash(c.n);
@@ -1016,25 +900,10 @@ function avatarSvg(c) {
   return 'data:image/svg+xml,' + encodeURIComponent(svg);
 }
 
-function avatarBorder(t) {
-  if (t === 'i') return 'rgba(105,180,234,0.45)';
-  if (t === 's') return 'rgba(244,200,66,0.45)';
-  if (t === 'o') return 'rgba(255,255,255,0.15)';
-  return 'rgba(120,229,145,0.35)';
-}
-
-function tipoBadge(t) {
-  if (t === 'i') return '<span class="tipo-tag tipo-i">Influencer</span>';
-  if (t === 's') return '<span class="tipo-tag tipo-s">Speaker</span>';
-  if (t === 'o') return '<span class="tipo-tag tipo-o">Ospite</span>';
-  return '';
-}
-
 function cardInner(c) {
-  const isCreator = !c.t;
   return `
     <div class="flex items-center gap-3 mb-3">
-      <div style="width:48px;height:48px;border-radius:50%;border:2px solid ${avatarBorder(c.t)};overflow:hidden;flex-shrink:0;">
+      <div style="width:48px;height:48px;border-radius:50%;border:2px solid rgba(120,229,145,0.35);overflow:hidden;flex-shrink:0;">
         <img src="${avatarSvg(c)}" alt="${c.n}"
              width="48" height="48"
              style="border-radius:50%;width:100%;height:100%;">
@@ -1049,26 +918,23 @@ function cardInner(c) {
       ${c.fL ? `<span class="font-display font-bold text-mw-green" style="font-size:0.85rem;">${c.fL}</span>` : ''}
     </div>
     <div style="display:flex;flex-wrap:wrap;gap:5px;">
-      ${isCreator ? `
-        ${c.reel ? '<span class="fmt fmt-reel">Reel</span>' : ''}
-        ${c.st   ? '<span class="fmt fmt-stories">Stories</span>' : ''}
-        ${c.adv  ? '<span class="fmt fmt-adv">ADV</span>' : ''}
-        ${c.aff  ? '<span class="fmt fmt-aff">Affiliazione</span>' : ''}
-      ` : tipoBadge(c.t)}
+      ${c.reel ? '<span class="fmt fmt-reel">Reel</span>' : ''}
+      ${c.st   ? '<span class="fmt fmt-stories">Stories</span>' : ''}
+      ${c.adv  ? '<span class="fmt fmt-adv">ADV</span>' : ''}
+      ${c.aff  ? '<span class="fmt fmt-aff">Affiliazione</span>' : ''}
     </div>
   `;
 }
 
 function getFiltered() {
   return creators.filter(c => {
-    const matchTipo = currentTipo === 'creator' ? !c.t : !!c.t;
     const matchSect = currentSector === 'all' || c.s === currentSector;
     const matchFl   = currentFl === 'all'
       ? true
       : currentFl === 'micro' ? c.f < 50000
       : currentFl === 'mid'   ? (c.f >= 50000 && c.f < 200000)
       : c.f >= 200000;
-    return matchTipo && matchSect && matchFl;
+    return matchSect && matchFl;
   });
 }
 
@@ -1100,20 +966,6 @@ function renderGrid() {
   }
 }
 
-// Tipo tabs
-document.getElementById('tipo-tabs').addEventListener('click', e => {
-  const tab = e.target.closest('[data-tipo]');
-  if (!tab) return;
-  currentTipo = tab.dataset.tipo;
-  currentSector = 'all';
-  currentFl = 'all';
-  showAll = false;
-  document.querySelectorAll('.filter-chip').forEach(c => c.classList.toggle('active', c.dataset.sector === 'all'));
-  document.querySelectorAll('.fl-chip').forEach(c => c.classList.toggle('active', c.dataset.fl === 'all'));
-  updateTabUI();
-  renderGrid();
-});
-
 // Sector filter chips
 document.getElementById('filter-chips').addEventListener('click', e => {
   const chip = e.target.closest('[data-sector]');
@@ -1141,32 +993,6 @@ document.getElementById('show-more-btn').addEventListener('click', () => {
   renderGrid();
 });
 
-// Fix titolo influencer tab (niente style inline sul gradient)
-function updateTabUI() {
-  const isCreator = currentTipo === 'creator';
-  document.querySelectorAll('.tipo-tab').forEach(t => {
-    t.classList.remove('active-creator', 'active-influencer');
-    if (t.dataset.tipo === currentTipo) {
-      t.classList.add(isCreator ? 'active-creator' : 'active-influencer');
-    }
-  });
-  document.getElementById('influencer-banner').style.display = isCreator ? 'none' : 'flex';
-  const title    = document.getElementById('network-title');
-  const subtitle = document.getElementById('network-subtitle');
-  if (isCreator) {
-    title.innerHTML  = 'Creator attivabili. <span class="text-grad">Scegli il tuo pacchetto. 🎯</span>';
-    subtitle.textContent = '112 creator confermati con attivazioni sponsor: Reel, Stories, ADV, affiliazione. Filtra per settore e fascia di follower.';
-  } else {
-    title.innerHTML  = 'Influencer &amp; Ospiti. <span class="text-grad">Presenti all\'evento. 🌟</span>';
-    subtitle.textContent = 'Influencer, speaker e ospiti invitati a MW2026. Non inclusi nei pacchetti standard: contatta Alessia per attivazioni custom.';
-  }
-  const creatorCount    = creators.filter(c => !c.t).length;
-  const influencerCount = creators.filter(c => !!c.t).length;
-  document.getElementById('tab-creator-count').textContent    = `(${creatorCount})`;
-  document.getElementById('tab-influencer-count').textContent = `(${influencerCount})`;
-}
-
-updateTabUI();
 renderGrid();
 </script>
 </body>
