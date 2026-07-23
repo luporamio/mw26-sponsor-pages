@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Creator Network — Marketers World 2026</title>
+  <title>Creator Network: Marketers World 2026</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -252,7 +252,7 @@
     </div>
 
     <h1 class="font-display font-bold leading-[1.02] tracking-tight mb-6" style="font-size: clamp(2.5rem, 6vw, 5rem);">
-      <span class="text-grad">191 creator &amp; talent.</span><br>
+      <span class="text-grad">192 creator &amp; talent.</span><br>
       Un solo evento.<br>
       Il tuo brand ovunque. 🚀
     </h1>
@@ -263,15 +263,15 @@
 
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12 max-w-3xl w-full">
       <div class="card-glass rounded-2xl p-5 text-center">
-        <p class="font-display text-3xl font-bold text-grad mb-1">191</p>
+        <p class="font-display text-3xl font-bold text-grad mb-1">192</p>
         <p class="text-xs text-white/40 uppercase tracking-wider">Talent confermati</p>
       </div>
       <div class="card-glass rounded-2xl p-5 text-center">
-        <p class="font-display text-3xl font-bold text-grad mb-1">15M+</p>
+        <p class="font-display text-3xl font-bold text-grad mb-1">11.5M+</p>
         <p class="text-xs text-white/40 uppercase tracking-wider">Follower totali</p>
       </div>
       <div class="card-glass rounded-2xl p-5 text-center">
-        <p class="font-display text-3xl font-bold text-grad mb-1">8</p>
+        <p class="font-display text-3xl font-bold text-grad mb-1">7</p>
         <p class="text-xs text-white/40 uppercase tracking-wider">Settori coperti</p>
       </div>
       <div class="card-glass rounded-2xl p-5 text-center">
@@ -483,7 +483,7 @@
         Creator attivabili. <span class="text-grad">Scegli il tuo pacchetto. 🎯</span>
       </h2>
       <p id="network-subtitle" class="text-white/50 max-w-xl">
-        192 creator confermati (184 World + 8 Village) con attivazioni sponsor disponibili: Reel, Stories, ADV, codici affiliazione. Filtra per settore e followers per trovare il profilo giusto per il tuo brand.
+        192 creator confermati (184 World + 8 Village) con attivazioni sponsor disponibili: Reel, Stories, ADV, codici affiliazione. Filtra per settore e followers per farti un'idea del volume: la selezione mirata sui singoli talent la facciamo con Alessia e Vittoria dopo la tua richiesta.
       </p>
     </div>
 
@@ -650,7 +650,7 @@ gsap.utils.toArray('.gsap-fade').forEach(el => {
 });
 
 // -------------------------------------------------------
-// CREATOR DATA — da foglio MW2026 Creator/Influencer
+// CREATOR DATA: da foglio MW2026 Creator/Influencer
 // -------------------------------------------------------
 const creators = [
   {n:"Giorgia Amatori",h:"giorgiaamatori.finance",p:"instagram",s:"finance",sL:"Finance",f:16000,fL:"16k",reel:1,st:1,adv:1,aff:1},
@@ -854,16 +854,26 @@ let currentSector = 'all';
 let currentFl     = 'all';     // 'all' | 'micro' | 'mid' | 'macro'
 let showAll = false;
 
-function profileUrl(c) {
-  if (c.p === 'tiktok') return `https://www.tiktok.com/@${c.h}`;
-  return `https://www.instagram.com/${c.h}`;
-}
-
 function initials(name) {
   return name.split(' ').slice(0,2).map(w => w[0]).join('').toUpperCase();
 }
 
-// Avatar SVG inline deterministico — nessuna dipendenza esterna
+// Mostriamo volume e valore del roster, non i dati per contattare i singoli talent:
+// la selezione mirata la fanno Alessia e Vittoria dopo la richiesta del brand.
+function maskName(name) {
+  const parts = name.trim().split(/\s+/);
+  if (parts.length > 1) {
+    return parts[0] + ' ' + parts[parts.length - 1][0].toUpperCase() + '.';
+  }
+  return name.length > 4 ? name.slice(0, 4) + '…' : name;
+}
+
+function maskHandle(handle) {
+  if (!handle) return '';
+  return handle.length > 4 ? handle.slice(0, 4) + '••••' : handle + '•••';
+}
+
+// Avatar SVG inline deterministico: nessuna dipendenza esterna
 // Instagram blocca ogni scraper, quindi usiamo gradient branded
 const AVATAR_PALETTES = [
   { bg1:'#0f2d14', bg2:'#0d1525', fg:'#78E591' },
@@ -904,13 +914,13 @@ function cardInner(c) {
   return `
     <div class="flex items-center gap-3 mb-3">
       <div style="width:48px;height:48px;border-radius:50%;border:2px solid rgba(120,229,145,0.35);overflow:hidden;flex-shrink:0;">
-        <img src="${avatarSvg(c)}" alt="${c.n}"
+        <img src="${avatarSvg(c)}" alt="${maskName(c.n)}"
              width="48" height="48"
              style="border-radius:50%;width:100%;height:100%;">
       </div>
       <div style="min-width:0;">
-        <p class="font-display font-semibold text-sm text-white leading-tight" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${c.n}</p>
-        <p style="font-size:0.68rem;color:rgba(255,255,255,0.32);margin-top:2px;">${c.h ? '@' + c.h : ''}</p>
+        <p class="font-display font-semibold text-sm text-white leading-tight" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${maskName(c.n)}</p>
+        <p style="font-size:0.68rem;color:rgba(255,255,255,0.32);margin-top:2px;">${c.h ? '@' + maskHandle(c.h) : ''}</p>
       </div>
     </div>
     <div class="flex items-center justify-between mb-3">
@@ -949,12 +959,9 @@ function renderGrid() {
   document.getElementById('results-count').textContent =
     `${filtered.length} profil${filtered.length === 1 ? 'o' : 'i'} trovati`;
 
-  grid.innerHTML = visible.map(c => {
-    if (c.h) {
-      return `<a href="${profileUrl(c)}" target="_blank" rel="noopener" class="creator-card">${cardInner(c)}</a>`;
-    }
-    return `<div class="creator-card" style="cursor:default;">${cardInner(c)}</div>`;
-  }).join('');
+  grid.innerHTML = visible.map(c =>
+    `<div class="creator-card" style="cursor:default;">${cardInner(c)}</div>`
+  ).join('');
 
   const btn  = document.getElementById('show-more-btn');
   const wrap = document.getElementById('show-more-wrap');
